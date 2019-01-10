@@ -1,0 +1,458 @@
+<html><head><title>Presentations: Monads in [My Py]thon</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="rhdzmota" /><meta name="description" content="Talks and Presentations" /><meta name="og:image" content="/presentations/img/poster.png" /><meta name="og:title" content="Presentations: Monads in [My Py]thon" /><meta name="og:site_name" content="Presentations" /><meta name="og:url" content="https://rhdzmota.github.io/presentations" /><meta name="og:type" content="website" /><meta name="og:description" content="Talks and Presentations" /><link rel="icon" type="image/png" href="/presentations/img/favicon.png" /><meta name="twitter:title" content="Presentations: Monads in [My Py]thon" /><meta name="twitter:image" content="https://rhdzmota.github.io/presentationsimg/poster.png" /><meta name="twitter:description" content="Talks and Presentations" /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/presentations/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/presentations/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/presentations/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/presentations/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/presentations/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/presentations/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/presentations/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/presentations/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/presentations/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/presentations/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/presentations/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/presentations/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/presentations/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/presentations/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/presentations/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/presentations/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/presentations/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/presentations/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/presentations/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/presentations/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/presentations/highlight/styles/atom-one-light.css" /><link rel="stylesheet" href="/presentations/css/style.css" /><link rel="stylesheet" href="/presentations/css/palette.css" /><link rel="stylesheet" href="/presentations/css/codemirror.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/presentations/" class="brand"><div class="brand-wrapper"><span>Presentations</span></div></a></li> <li><a href="/presentations/docs.html" class="">Welcome!</a></li> <li><a href="/presentations/docs/01-monads-in-my-python.html" class="">Monads in [My Py]thon!</a></li> <li><a href="/presentations/docs/02-end-to-end-ml-with-apache-spark.html" class="">E2E ML with Apache Spark</a></li>      </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li id="gh-eyes-item" class="hidden-xs"><a href="https://github.com/rhdzmota/presentations"><i class="fa fa-eye"></i><span>WATCH<span id="eyes" class="label label-default">--</span></span></a></li><li id="gh-stars-item" class="hidden-xs"><a href="https://github.com/rhdzmota/presentations"><i class="fa fa-star-o"></i><span>STARS<span id="stars" class="label label-default">--</span></span></a></li><li><a href="#" onclick="shareSiteTwitter('Presentations Talks and Presentations');"><i class="fa fa-twitter"></i></a></li><li><a href="#" onclick="shareSiteFacebook('Presentations Talks and Presentations');"><i class="fa fa-facebook"></i></a></li><li><a href="#" onclick="shareSiteGoogle();"><i class="fa fa-google-plus"></i></a></li></ul></div></div></div></div><div id="content" data-github-owner="rhdzmota" data-github-repo="presentations"><div class="content-wrapper"><section><h1 id="acknowledgments">Acknowledgments</h1>
+
+<p>This talk is inspired and based on the following conferences:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=WNwV3wR4JjA">Monads, in my Python?</a> by Xuanyi Chew</li>
+  <li><a href="https://www.youtube.com/watch?v=Mw_Jnn_Y5iA">Scala Monads: Declutter Your Code With Monadic Design</a> by Dan Rosen</li>
+  <li><a href="https://www.youtube.com/watch?v=JMP6gI5mLHc">Category Theory, The essence of interface-based design</a> by Erik Meijer</li>
+  <li><a href="https://www.youtube.com/watch?v=pMgmKJyWKn8">Type-checked Python in the real world</a> by Carl Meyer</li>
+  <li><a href="https://www.youtube.com/watch?v=cj07Fwzamy0">Learning to Love Type Systems</a> by Lauren Tan</li>
+  <li><a href="https://www.youtube.com/watch?v=6P06YHc8faw">New Functional Constructs in Scala 3</a> by Martin Odersky</li>
+</ul>
+
+<h1 id="about-mypy">About MyPy</h1>
+
+<p>The <em>python-enhancement-proposal-484</em> (<a href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>) by <a href="https://twitter.com/gvanrossum">Guido van Rossum</a> and <a href="https://twitter.com/JukkaLeh">Jukka Lehtosalo</a> introduced the concept of <strong>type hints</strong> inspired on function annotations (<a href="https://www.python.org/dev/peps/pep-3107/">PEP 3107</a>). This type-hints are completely ignored at runtime but can be used with an optional static type checker. <a href="https://github.com/python/mypy">MyPy</a> is the most popular type checker for python, lead by <a href="https://twitter.com/gvanrossum">Guido van Rossum</a> at <a href="http://mypy-lang.org/about.html">Dropbox</a>.</p>
+
+<h2 id="why-types">Why types</h2>
+
+<blockquote>
+  <p>“A type system is a tractable syntactic method for proving the absence of certain program behaviors by classifying phrases according to the kinds of values they compute.”</p>
+</blockquote>
+
+<p>(Pierce and Benjamin 2002)</p>
+
+<blockquote>
+  <p>“A type system is a way to add constraints to your code. The type system is there to help you enforce logic that’s consistent within those constraints.”</p>
+</blockquote>
+
+<p>(Tan 2018)</p>
+
+<p>Constraints are desirable because they limit the number of bugs in the program. We can use a strong DSL (domain specific language) to represent the business logic of our application and let the type checker verify the consistency.</p>
+
+<p>In the <a href="https://dev.to/stereobooster/pragmatic-types-type-systems-vs-tests-4k3e">Pragmatic types</a> blogpost, the author explains the difference between using a type system for type-checking the code vs using unit-tests. Consider the following illustration:</p>
+
+<p><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--YIefgqbH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_400/https://thepracticaldev.s3.amazonaws.com/i/veud7eoptty10opiig5o.png" alt="Types-Checking vs Tests" /></p>
+
+<p>We achieve type-safety in an application with (1) a robust type system &amp; checker, and (2) by following the functional programming principles.</p>
+
+<p>Functional programming started as a practical implementation of the following mathematical theories:</p>
+
+<ul>
+  <li><strong>Proof Theory</strong>: logic and mathematical proofs.</li>
+  <li><strong>Category Theory</strong>: algebra, composition and abstractions.</li>
+  <li><strong>Type Theory</strong>: programs and the idea of prepositions as types.</li>
+</ul>
+
+<p><strong>Curry-Howard-Lambek correspondence</strong> shows that these three theories are equivalent among each others.</p>
+
+<p>Consider the following python function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>    <span class="c1"># proposition
+</span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>                        <span class="c1"># proof
+</span></code></pre></div></div>
+
+<p>The type signature serves as a proposition; given two integers <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>, there exists a function that returns another integer.</p>
+
+<p>The implementation (body) of the function is the proof of such proposition. In this sense, <strong>types</strong> are propositions and <strong>programs</strong> are proofs. Therefore, we can think of type-checking as proof-checking.</p>
+
+<p>Good type signatures and a DSLs facilitate the implementation of a particular program and let’s the developer rely on the type-systems to increase productivity.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Installation it’s straightforward (<a href="releases.ubuntu.com/18.04/">Ubuntu 18.04</a>):</p>
+
+<pre><code class="language-commandline">$ sudo apt install python3.7 &amp;&amp; python3.7 -m pip install -U mypy
+</code></pre>
+
+<p>Now you can run the static type checker with your python programs:</p>
+
+<pre><code class="language-commandline">$ python3.7 -m mypy app.py
+</code></pre>
+
+<p>To avoid warnings/errors related to external libraries, use:</p>
+
+<pre><code class="language-commanline">$ python3.7 -m mypy --ignore-missing-imports app.py
+</code></pre>
+
+<h1 id="about-monads">About Monads</h1>
+
+<p>The most popular definition of a monad is probably the one phrased by <a href="https://twitter.com/jamesiry">James Iry</a> in his blog-post <a href="https://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html">A Brief, Incomplete, and Mostly Wrong History of Programming Languages</a>.</p>
+
+<blockquote>
+  <p>“A monad is just a monoid in the category of endofunctors.”</p>
+</blockquote>
+
+<p>Nonetheless, we can find the complete form of this definition in the book <a href="https://books.google.com/books?hl=en&amp;lr=&amp;id=gfI-BAAAQBAJ&amp;oi=fnd&amp;pg=PR5&amp;dq=Categories+for+the+Working+Mathematician&amp;ots=xlLg-1xCZS&amp;sig=f4V84Q2JK9Kvh5-S0XCl1N-xvmQ#v=onepage&amp;q=Categories%20for%20the%20Working%20Mathematician&amp;f=false">Categories for the working mathematician</a>.</p>
+
+<blockquote>
+  <p>“A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.”</p>
+</blockquote>
+
+<p>(Mac Lane 2013)</p>
+
+<p>And a more formal definition in this same book:</p>
+
+<blockquote>
+  <p>“Formally, the definition of a monad is like that of a monoid <em>M</em> in sets. The set <em>M</em> of elements of the monoid is replaced by the endofunctor <em>T</em> : <em>X</em> → <em>X</em> , while the cartesian product × of two sets is replaced by the composite of two functors, the binary operation <em>μ</em> : <em>M</em> × <em>M</em> → <em>M</em> of multiplication by the trasformation <em>μ</em> : <em>T</em><sup>2</sup> → <em>T</em> and the unit (identity) element <em>ν</em> : 1 → <em>M</em> by <em>ν</em> : <em>I</em><sub><em>x</em></sub> → <em>T</em>.”</p>
+</blockquote>
+
+<p>(Mac Lane 2013)</p>
+
+<p>With the help of this <a href="https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem">stackoverflow post</a>, this <a href="http://mathworld.wolfram.com/Monoid.html">wolfram post</a> and the <a href="https://typelevel.org/cats/typeclasses.html">scala cats typelevel docs</a> we can shine some light to this definition:</p>
+
+<ul>
+  <li>A monoid is a representation of a set <em>S</em> closed under an <a href="http://mathworld.wolfram.com/Associative.html">associative</a> binary operation and has an <a href="http://mathworld.wolfram.com/IdentityElement.html">identity element</a> or unit.</li>
+</ul>
+
+<p>A type <code class="highlighter-rouge">A</code> can form a semigroup if it has an associative binary operation <code class="highlighter-rouge">combine</code> that satisfies <code class="highlighter-rouge">combine(x, combine(y, z)) = combine(combine(x, y), z)</code> for any choice of <code class="highlighter-rouge">x</code>, <code class="highlighter-rouge">y</code>, and <code class="highlighter-rouge">z</code> in <code class="highlighter-rouge">A</code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Semigroup</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">combine</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">A</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">Semigroup</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">combine</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">A</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">sg</span><span class="k">:</span> <span class="kt">Semigroup</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span>
+        <span class="n">sg</span><span class="o">.</span><span class="n">combine</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We can create a simple example for <code class="highlighter-rouge">Int</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">implicit</span> <span class="k">val</span> <span class="n">integerAdditionSemigroup</span><span class="k">:</span> <span class="kt">Semigroup</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">new</span> <span class="nc">Semigroup</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="o">{</span>
+        <span class="k">def</span> <span class="n">combine</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Example:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Semigroup</span><span class="o">.</span><span class="n">combine</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// res0: Int = 3
+</span>
+<span class="nc">Semigroup</span><span class="o">.</span><span class="n">combine</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Semigroup</span><span class="o">.</span><span class="n">combine</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span>
+<span class="c1">// res1: Int = 6
+</span></code></pre></div></div>
+
+<p>To define a monoid we need to extend the <code class="highlighter-rouge">Semigroup</code> with an empty value such that the following holds true: <code class="highlighter-rouge">combine(x, empty) = combine(empty, x) = x</code></p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="nc">extends</span> <span class="nc">Semigroup</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">empty</span><span class="k">:</span> <span class="kt">A</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">Monoid</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">empty</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="k">implicit</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">empty</span>
+    <span class="k">def</span> <span class="n">combine</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">A</span><span class="o">)(</span><span class="k">implicit</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">combine</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">// Int monoid
+</span><span class="k">implicit</span> <span class="k">val</span> <span class="n">integerAdditionMonoid</span><span class="k">:</span> <span class="kt">Monoid</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">empty</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="n">combine</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We can verify the <code class="highlighter-rouge">combine</code> operation with our empty element:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Monoid</span><span class="o">.</span><span class="n">combine</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Monoid</span><span class="o">.</span><span class="n">empty</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+<span class="c1">// res3: Int = 1
+</span></code></pre></div></div>
+
+<ul>
+  <li>A <strong>functor</strong> is a mathematical structure-preserving transformation between categories. And <strong>endofunctor</strong> is a functor from one category back to the same category.</li>
+</ul>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Functor</span><span class="o">[</span><span class="kt">F</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="n">fa</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A <strong>category</strong> is a collection of (1) objects, (2) morphisms or arrows for each pair of objects, and a (3) binary operation for composition between arrows. See <a href="http://mathworld.wolfram.com/Category.html">more about categories</a>.</li>
+</ul>
+
+<p>According to Erik Meijer in this talk “Category Theory, The essence of interface-based design” we can use the following following equivalences as a practival guide:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Category</code> = Programming Language</li>
+  <li><code class="highlighter-rouge">Objects</code> = Types</li>
+  <li><code class="highlighter-rouge">Morphism</code> = functions, static methods, properties : <code class="highlighter-rouge">f(a: A): B</code> or <code class="highlighter-rouge">f: B</code> an <code class="highlighter-rouge">A</code></li>
+</ul>
+
+<p>(Meijer 2015)</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Lead_Photo_For_Category_%28mathematics%290-41319275833666325.png" alt="Categories" /></p>
+
+<h1 id="monads-in-scala">Monads in Scala</h1>
+
+<p>The Scala language provides a rich set of functional programming constructs. Consider the following code-snipped shown at the conference “Scale by the Bay - 2018” by Martin Odersky to define an abstract monad in Scala:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Functor</span><span class="o">[</span><span class="kt">F</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="k">this</span> <span class="n">x</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+<span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">Monad</span><span class="o">[</span><span class="kt">F</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span> <span class="nc">extends</span> <span class="nc">Functor</span><span class="o">[</span><span class="kt">F</span><span class="o">]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">pure</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span>
+    <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="k">this</span> <span class="n">x</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">F</span><span class="o">[</span><span class="kt">B</span><span class="o">])</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+    <span class="k">def</span> <span class="n">map</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="k">this</span> <span class="n">x</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">F</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span> <span class="k">=</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">f</span> <span class="n">`andThen`</span> <span class="n">pure</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now we can use extension methods (Scala 3) to create a particular implementation:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">implicit</span> <span class="k">object</span> <span class="nc">ListMonad</span> <span class="k">extends</span> <span class="nc">Monad</span><span class="o">[</span><span class="kt">List</span><span class="o">]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">flatMap</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">B</span><span class="o">](</span><span class="k">this</span> <span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="nc">List</span><span class="o">[</span><span class="kt">B</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span> <span class="k">=</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">f</span><span class="o">)</span>
+    <span class="k">def</span> <span class="n">pure</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>(Odersky 2018)</p>
+
+<h1 id="monads-in-python">Monads in python</h1>
+
+<p><a href="https://github.com/python/typing/issues/548">Without higher-kinded types</a>. For now.</p>
+
+<p>Consider the following python functions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"Factorial is defined over non-negative numbers"</span><span class="p">)</span>
+   <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If we would like to compose both functions we would likely have to implement several safe guards to avoid runtime erros and invalid inputs. What if we use python’s <code class="highlighter-rouge">None</code> naively instead of error-handling for the <code class="highlighter-rouge">div</code> function?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">den</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
+</code></pre></div></div>
+
+<p>We still have composability problems (see <a href="https://youtu.be/WNwV3wR4JjA?t=778">this diagram</a>). Moreover, our types are incorrect!</p>
+
+<ul>
+  <li><strong>Q</strong>: Is there a way we can generalize this?</li>
+  <li><strong>A</strong>: Monads!</li>
+</ul>
+
+<p>Let’s create an <code class="highlighter-rouge">Option</code> monad.</p>
+
+<p>For simplicity, let’s use a higher-order function that allows us to compose two functions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">'A'</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">'B'</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">'C'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">this</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">B</span><span class="p">],</span> <span class="n">and_then</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">B</span><span class="p">],</span> <span class="n">C</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">C</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">and_then</span><span class="p">(</span><span class="n">this</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Now let’s define our option:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">"B"</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">"T"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Option</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">A</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">or_else</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]:</span>
+        <span class="k">pass</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="s">'Option[B]'</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s">'Option[B]'</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">pure</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s">'Option[T]'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s">'Option[B]'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="n">this</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">and_then</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pure</span><span class="p">))</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">foreach</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="bp">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s">'Option'</span><span class="p">:</span>
+        <span class="k">pass</span>
+</code></pre></div></div>
+
+<p>An <code class="highlighter-rouge">Option[A]</code> can take <code class="highlighter-rouge">Some[A]</code> value or be <code class="highlighter-rouge">Empty</code>. We can define the <code class="highlighter-rouge">Some</code> type:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Some</span><span class="p">(</span><span class="n">Option</span><span class="p">[</span><span class="n">A</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">A</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s">"Some({self._value})"</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">or_else</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+    <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">foreach</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="bp">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">,</span> <span class="n">Option</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">Empty</code> class is defined as:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Empty</span><span class="p">(</span><span class="n">Option</span><span class="p">[</span><span class="n">A</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"Empty"</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">or_else</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">or_else</span><span class="p">,</span> <span class="nb">Exception</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">or_else</span>
+        <span class="k">return</span> <span class="n">or_else</span>
+    <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">Empty</span><span class="p">[</span><span class="n">B</span><span class="p">]()</span>
+    <span class="k">def</span> <span class="nf">foreach</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="bp">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></div>
+
+<p>Now we can use our option type!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Two options
+</span><span class="n">opt_a</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Some</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">opt_b</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Some</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Sum a+b
+</span><span class="n">opt_c</span> <span class="o">=</span> <span class="n">opt_a</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">opt_b</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+<span class="c1"># Sum c+d
+</span><span class="n">opt_d</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Empty</span><span class="p">()</span>
+<span class="n">opt_e</span> <span class="o">=</span> <span class="n">opt_c</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">opt_d</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">))</span>
+<span class="c1"># Print results
+</span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"opt_c = {opt_c}</span><span class="se">\n</span><span class="s">opt_e = {opt_e}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## opt_c = Some(7)
+## opt_e = Empty
+</code></pre></div></div>
+
+<p>Let’s define some decorators:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeVar</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">"T"</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s">"A"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Decorate a function to output <code class="highlighter-rouge">Option</code> type:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">to_option</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Empty</span><span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+            <span class="k">return</span> <span class="n">Some</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="nb">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Empty</span><span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</code></pre></div></div>
+
+<p>Decorate a function facilitate <code class="highlighter-rouge">Option</code> composability;</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">composable</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Option</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">new_args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">new_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">new_arg</span> <span class="o">=</span> <span class="n">arg</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Option</span><span class="p">)</span> <span class="k">else</span> <span class="n">Some</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+            <span class="n">new_arg</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">new_val</span> <span class="o">=</span> <span class="n">v</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Option</span><span class="p">)</span> <span class="k">else</span> <span class="n">Some</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="n">new_val</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">new_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">value</span><span class="p">}))</span>
+        <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inner</span>
+</code></pre></div></div>
+
+<p>Now we are ready to define our functions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">composable</span>
+<span class="o">@</span><span class="n">to_option</span>
+<span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">composable</span>
+<span class="o">@</span><span class="n">to_option</span>
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"Factorial is defined over non-negative numbers"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Our monadic values allows us to easily compose between <code class="highlighter-rouge">Objects</code> (see <a href="https://youtu.be/WNwV3wR4JjA?t=1034">this</a>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"div(a,b) = {res}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## div(a,b) = Empty
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">res_1</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="n">res_2</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"div(d, div(a, b) = {res_1}</span><span class="se">\n</span><span class="s">div(d, div(a, c)) = {res_2}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## div(d, div(a, b) = Empty
+## div(d, div(a, c)) = Some(1.0)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">res_1</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">res_2</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">res_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"div(a, b) = {res_1}</span><span class="se">\n</span><span class="s">factorial(res_1)= {res_2}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## div(a, b) = Some(-5.0)
+## factorial(res_1)= Empty
+</code></pre></div></div>
+
+<p>Great!</p>
+
+<h1 id="example">Example</h1>
+
+<p>add a more complex example.</p>
+
+<h1 id="references">References</h1>
+
+<p>Mac Lane, Saunders. 2013. <em>Categories for the Working Mathematician</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+
+<p>Meijer, Erik. 2015. “Category Theory, the Essence of Interface-Based Design.” Youtube - FooCafe. <a href="https://www.youtube.com/watch?v=JMP6gI5mLHc">https://www.youtube.com/watch?v=JMP6gI5mLHc</a>.</p>
+
+<p>Odersky, Martin. 2018. “New Functional Constructs in Scala 3.” Youtube - FunctionalTV. <a href="https://www.youtube.com/watch?v=6P06YHc8faw">https://www.youtube.com/watch?v=6P06YHc8faw</a>.</p>
+
+<p>Pierce, Benjamin C, and C Benjamin. 2002. <em>Types and Programming Languages</em>. MIT press.</p>
+
+<p>Tan, Lauren. 2018. “Learning to Love Type Systems.” Youtube - DotJs. <a href="https://www.youtube.com/watch?v=cj07Fwzamy0">https://www.youtube.com/watch?v=cj07Fwzamy0</a>.</p>
+</section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/presentations/highlight/highlight.pack.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script><script>hljs.configure({languages:['scala','java','bash','haskell','fsharp','scala','python','java']});
+hljs.initHighlighting();
+              </script><script src="/presentations/js/mathjax-config.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML,https://rhdzmota.github.io/presentations/js/mathjax-config.js"></script><script>((window.gitter = {}).chat = {}).options = {
+room: 'rhdzmota/presentations'};</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js"></script><script src="/presentations/js/main.js"></script></body></html>
