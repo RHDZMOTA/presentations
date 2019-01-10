@@ -72,4 +72,4 @@ src/main/resources/microsite/slides/*.html
 
 .mypy_cache*
 .vscode
-
+src/main/tut/index.md
