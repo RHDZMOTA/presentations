@@ -10,7 +10,7 @@ or want to request more information!
 
 
 This site follows the [Free Software] philosophy and
-allows **Copyleft**: if you change this site (or content) 
+allows **Copyleft**: if you change this site or content 
 and distribute your own version, you must also pass these freedoms to its recipients.
 Hence, you can freely use the code-snippets, examples, and 
 information contained in this site. All of this is distributed under 
