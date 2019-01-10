@@ -1,0 +1,10 @@
+
+```{r setup, include=FALSE}
+reticulate::use_python("/usr/bin/python3.7")
+```
+
+# Acknowledgments
+
+This talk is based and inspired on the following conferences:
+
+# References

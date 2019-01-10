@@ -1,0 +1,130 @@
+#!/bin/bash
+
+makeSlides () {
+  while read -r slide
+  do
+    echo "Generating reveal.js slide for: ${slide}"
+    session=$(sed -e 's/^"//' -e 's/"$//' <<< "$slide")
+    title=$(cat slides/config.json | jq -r --arg v "$session" '."\($v)".title')
+    author=$(cat slides/config.json | jq -r --arg v "$session" '."\($v)".author')
+    pandoc \
+            --from markdown+tex_math_single_backslash+inline_code_attributes \
+            --standalone --mathjax \
+            --variable colorlinks=true \
+            --to revealjs \
+            --output src/main/resources/microsite/slides/${session}.html \
+            -V theme:night \
+            "--metadata=title:\"${title}\"" \
+            "--metadata=author:\"${author}\"" \
+            slides/${session}.md
+  done < <(cat slides/config.json | jq 'keys | .[]')
+}
+
+makeDocs () {
+  while read -r rdoc
+  do
+    doc=$(sed -e 's/^"//' -e 's/"$//' <<< "$rdoc")
+    title=$(cat docs/config.json | jq -r --arg v "$doc" '."\($v)".title')
+    author=$(cat docs/config.json | jq -r --arg v "$doc" '."\($v)".author')
+    echo "Generating documentation for: ${doc}"
+    printf "rmarkdown::render('$PWD/docs/$doc.rmd', clean=FALSE, run_pandoc=FALSE)" | R --vanilla --quiet
+    pandoc +RTS -K512m -RTS docs/${doc}.utf8.md \
+        --to markdown_github \
+        --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash \
+        --output docs/${doc}.md \
+        --standalone \
+        '--metadata=bibliography:"references.bib"'
+    echo -e "---\nlayout: docs\ntitle: \"${title}\"\nsection: \"docs\" \nauthor: \"${author}\"\n---\n" | cat - docs/${doc}.md > docs/temp
+    sed -i -e 's/``` tut/```tut/g' docs/temp
+    sed -i -e 's/``` scala/```scala/g' docs/temp
+    sed -i -e 's/``` python/```python/g' docs/temp
+    mv docs/temp src/main/tut/docs/${doc}.md
+    if [[ -d "docs/${doc}_files" ]]; then
+        rm -rf src/main/tut/docs/${doc}_files
+        mv docs/${doc}_files src/main/tut/docs/${doc}_files
+    fi
+    rm docs/${doc}.knit.md docs/${doc}.utf8.md docs/${doc}.md
+  done < <(cat docs/config.json | jq 'keys | .[]')
+}
+
+makePdfs () {
+  while read -r mdoc
+  do
+    module="$(basename ${mdoc} .md)"
+    title=$(cat docs/config.json | jq -r --arg v "$module" '."\($v)".title')
+    author=$(cat docs/config.json | jq -r --arg v "$module" '."\($v)".author')
+    echo "Generating pdf for: ${module}"
+    if [[ ! -d "src/main/resources/microsite/pdf" ]]; then
+        mkdir -p src/main/resources/microsite/pdf
+    fi
+    pdf_path="${PWD}/src/main/resources/microsite/pdf/${module}.pdf"
+    file_path="${PWD}/target/scala-2.12/resource_managed/main/jekyll/docs/${module}.md"
+    resources_path="target/scala-2.12/resource_managed/main /jekyll/docs/${module}_files"
+    pandoc +RTS -K512m -RTS ${file_path} \
+            --to latex \
+            --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash \
+            --output ${pdf_path} \
+            --template template.tex \
+            --highlight-style tango \
+            --latex-engine xelatex \
+            --variable mainfont="Linux Libertine O" \
+            --variable graphics=yes \
+            "--metadata=title:\"${title}\"" \
+            --variable 'geometry:margin=1.5in' \
+            --variable urlcolor=blue \
+            --variable fontsize=11pt \
+            --variable 'compact-title:yes'
+  done < <(find target/scala-2.12/resource_managed/main/jekyll/docs -name "*.md")
+}
+
+resetState () {
+  rm -rf target/
+  rm -rf _site
+}
+
+micrositeFiles () {
+  cp menu.yml src/main/resources/microsite/data/menu.yml
+  echo -e "---\nlayout: home\ntitle: \"Microdegree\"\nsection: \"home\" \nposition: 1\n---\n" | cat - README.md > src/main/tut/index.md
+}
+
+
+while [[ ! $# -eq 0 ]]
+do
+    case "$1" in
+        --help | -h)
+            echo "publish [OPTIONS]"
+            echo "  -h --help  : displays the help menu."
+            echo "  -l --local : builds the microsite and runs the local service with jekyll."
+            echo "  -s --site  : builds the microsite and publish into Github pages."
+            exit
+            ;;
+        --local | -l)
+            echo "Running microsite in local mode..."
+            micrositeFiles
+            resetState
+            makeSlides
+            makeDocs
+            sbt makeMicrosite
+            makePdfs
+            resetState
+            sbt makeMicrosite
+            jekyll serve -s target/site
+            exit
+            ;;
+        --site | -s)
+            echo "Publishing microsite..."
+            micrositeFiles
+            resetState
+            makeSlides
+            makeDocs
+            sbt makeMicrosite
+            makePdfs
+            resetState
+            sbt makeMicrosite
+            sbt ghpagesPushSite
+            exit
+            ;;
+    esac
+    shift
+done
+
