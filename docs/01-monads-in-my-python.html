@@ -49,9 +49,9 @@
 
 <p>Consider the following python function:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>    <span class="c1"># proposition
-</span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>                        <span class="c1"># proof
-</span></code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">addition</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>    <span class="c"># proposition</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>                        <span class="c"># proof</span>
+</code></pre></div></div>
 
 <p>The type signature serves as a proposition; given two integers <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>, there exists a function that returns another integer.</p>
 
@@ -268,24 +268,24 @@
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Option</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">A</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
-    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">or_else</span><span class="p">:</span> <span class="n">B</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]:</span>
         <span class="k">pass</span>
-    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="s">'Option[B]'</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s">'Option[B]'</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">pure</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s">'Option[T]'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Some</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="n">B</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s">'Option[B]'</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="n">compose</span><span class="p">(</span><span class="n">this</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">and_then</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pure</span><span class="p">))</span>
-    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">foreach</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">A</span><span class="p">],</span> <span class="bp">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s">'Option'</span><span class="p">:</span>
         <span class="k">pass</span>
 </code></pre></div></div>
@@ -330,16 +330,16 @@
 
 <p>Now we can use our option type!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Two options
-</span><span class="n">opt_a</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Some</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Two options</span>
+<span class="n">opt_a</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Some</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">opt_b</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Some</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="c1"># Sum a+b
-</span><span class="n">opt_c</span> <span class="o">=</span> <span class="n">opt_a</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">opt_b</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
-<span class="c1"># Sum c+d
-</span><span class="n">opt_d</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Empty</span><span class="p">()</span>
+<span class="c"># Sum a+b</span>
+<span class="n">opt_c</span> <span class="o">=</span> <span class="n">opt_a</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">opt_b</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span>
+<span class="c"># Sum c+d</span>
+<span class="n">opt_d</span><span class="p">:</span> <span class="n">Option</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Empty</span><span class="p">()</span>
 <span class="n">opt_e</span> <span class="o">=</span> <span class="n">opt_c</span><span class="o">.</span><span class="n">flat_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">opt_d</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">))</span>
-<span class="c1"># Print results
-</span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"opt_c = {opt_c}</span><span class="se">\n</span><span class="s">opt_e = {opt_e}"</span><span class="p">)</span>
+<span class="c"># Print results</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"opt_c = {opt_c}</span><span class="se">\n</span><span class="s">opt_e = {opt_e}"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## opt_c = Some(7)
@@ -386,14 +386,14 @@
 
 <p>Now we are ready to define our functions:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">composable</span>
-<span class="o">@</span><span class="n">to_option</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@composable</span>
+<span class="nd">@to_option</span>
 <span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">composable</span>
-<span class="o">@</span><span class="n">to_option</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@composable</span>
+<span class="nd">@to_option</span>
 <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"Factorial is defined over non-negative numbers"</span><span class="p">)</span>
