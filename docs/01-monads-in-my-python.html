@@ -33,8 +33,6 @@
 
 <p>In the <a href="https://dev.to/stereobooster/pragmatic-types-type-systems-vs-tests-4k3e">Pragmatic types</a> blogpost, the author explains the difference between using a type system for type-checking the code vs using unit-tests. Consider the following illustration:</p>
 
-<p><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--YIefgqbH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_400/https://thepracticaldev.s3.amazonaws.com/i/veud7eoptty10opiig5o.png" alt="Types-Checking vs Tests" /></p>
-
 <p>We achieve type-safety in an application with (1) a robust type system &amp; checker, and (2) by following the functional programming principles.</p>
 
 <p>Functional programming started as a practical implementation of the following mathematical theories:</p>
@@ -95,7 +93,7 @@
 <p>And a more formal definition in this same book:</p>
 
 <blockquote>
-  <p>“Formally, the definition of a monad is like that of a monoid <em>M</em> in sets. The set <em>M</em> of elements of the monoid is replaced by the endofunctor <em>T</em> : <em>X</em> → <em>X</em> , while the cartesian product × of two sets is replaced by the composite of two functors, the binary operation <em>μ</em> : <em>M</em> × <em>M</em> → <em>M</em> of multiplication by the trasformation <em>μ</em> : <em>T</em><sup>2</sup> → <em>T</em> and the unit (identity) element <em>ν</em> : 1 → <em>M</em> by <em>ν</em> : <em>I</em><sub><em>x</em></sub> → <em>T</em>.”</p>
+  <p>“Formally, the definition of a monad is like that of a monoid $M$ in sets. The set $M$ of elements of the monoid is replaced by the endofunctor $T: X \to X$ , while the cartesian product $×$ of two sets is replaced by the composite of two functors, the binary operation $\mu: M × M \to M$ of multiplication by the trasformation $\mu: T^2 \to T$ and the unit (identity) element $\nu: 1 \to M$ by $\nu: I_x \to T$.”</p>
 </blockquote>
 
 <p>(Mac Lane 2013)</p>
@@ -103,7 +101,7 @@
 <p>With the help of this <a href="https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem">stackoverflow post</a>, this <a href="http://mathworld.wolfram.com/Monoid.html">wolfram post</a> and the <a href="https://typelevel.org/cats/typeclasses.html">scala cats typelevel docs</a> we can shine some light to this definition:</p>
 
 <ul>
-  <li>A monoid is a representation of a set <em>S</em> closed under an <a href="http://mathworld.wolfram.com/Associative.html">associative</a> binary operation and has an <a href="http://mathworld.wolfram.com/IdentityElement.html">identity element</a> or unit.</li>
+  <li>A monoid is a representation of a set $S$ closed under an <a href="http://mathworld.wolfram.com/Associative.html">associative</a> binary operation and has an <a href="http://mathworld.wolfram.com/IdentityElement.html">identity element</a> or unit.</li>
 </ul>
 
 <p>A type <code class="highlighter-rouge">A</code> can form a semigroup if it has an associative binary operation <code class="highlighter-rouge">combine</code> that satisfies <code class="highlighter-rouge">combine(x, combine(y, z)) = combine(combine(x, y), z)</code> for any choice of <code class="highlighter-rouge">x</code>, <code class="highlighter-rouge">y</code>, and <code class="highlighter-rouge">z</code> in <code class="highlighter-rouge">A</code>.</p>
@@ -183,7 +181,7 @@
 
 <p>(Meijer 2015)</p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Lead_Photo_For_Category_%28mathematics%290-41319275833666325.png" alt="Categories" /></p>
+<p><img src="../img/category-theory.png" alt="Categories" /></p>
 
 <h1 id="monads-in-scala">Monads in Scala</h1>
 
@@ -452,7 +450,7 @@
 <p>Pierce, Benjamin C, and C Benjamin. 2002. <em>Types and Programming Languages</em>. MIT press.</p>
 
 <p>Tan, Lauren. 2018. “Learning to Love Type Systems.” Youtube - DotJs. <a href="https://www.youtube.com/watch?v=cj07Fwzamy0">https://www.youtube.com/watch?v=cj07Fwzamy0</a>.</p>
-</section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/presentations/highlight/highlight.pack.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script><script>hljs.configure({languages:['scala','java','bash','haskell','fsharp','scala','python','java']});
+</section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/presentations/highlight/highlight.pack.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script><script>hljs.configure({languages:['scala','java','bash','haskell','fsharp','scala','python','java','bash','r']});
 hljs.initHighlighting();
               </script><script src="/presentations/js/mathjax-config.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML,https://rhdzmota.github.io/presentations/js/mathjax-config.js"></script><script>((window.gitter = {}).chat = {}).options = {
 room: 'rhdzmota-presentations/community'};</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js"></script><script src="/presentations/js/main.js"></script></body></html>

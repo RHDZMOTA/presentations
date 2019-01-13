@@ -1,8 +1,8 @@
 MathJax.Hub.Config({
     tex2jax: {
-        inlineMath: [ ['$','$'], ["\(","\)"] ],
+        inlineMath: [ ['$','$'] ],
         processEscapes: true
     }
 });
 
-MathJax.Ajax.loadComplete("http://localhost:8080/presentations/js/mathjax-config.js");
+MathJax.Ajax.loadComplete("https://rhdzmota.github.io/presentations/js/mathjax-config.js");
