@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>1 Monads in [My Py]thon | Presentations and Talks</title>
+  <meta name="description" content="Let this book be a register of my talks and presentations.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="1 Monads in [My Py]thon | Presentations and Talks" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Let this book be a register of my talks and presentations." />
+  <meta name="github-repo" content="rhdzmota/presentations" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Monads in [My Py]thon | Presentations and Talks" />
+  
+  <meta name="twitter:description" content="Let this book be a register of my talks and presentations." />
+  
+
+<meta name="author" content="Rodrigo Hernández Mota">
+
+
+<meta name="date" content="2019-01-13">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="end-to-end-ml-with-apache-spark.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#how-to-read-this-book"><i class="fa fa-check"></i><b>0.1</b> How to read this book?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#how-was-this-created"><i class="fa fa-check"></i><b>0.2</b> How was this created?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#about-the-author"><i class="fa fa-check"></i><b>0.3</b> About the author</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html"><i class="fa fa-check"></i><b>1</b> Monads in [My Py]thon</a><ul>
+<li class="chapter" data-level="1.1" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#acknowledgments"><i class="fa fa-check"></i><b>1.1</b> Acknowledgments</a></li>
+<li class="chapter" data-level="1.2" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#about-mypy"><i class="fa fa-check"></i><b>1.2</b> About MyPy</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#why-types"><i class="fa fa-check"></i><b>1.2.1</b> Why types</a></li>
+<li class="chapter" data-level="1.2.2" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#installation"><i class="fa fa-check"></i><b>1.2.2</b> Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#about-monads"><i class="fa fa-check"></i><b>1.3</b> About Monads</a></li>
+<li class="chapter" data-level="1.4" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#monads-in-scala"><i class="fa fa-check"></i><b>1.4</b> Monads in Scala</a></li>
+<li class="chapter" data-level="1.5" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#monads-in-python"><i class="fa fa-check"></i><b>1.5</b> Monads in python</a></li>
+<li class="chapter" data-level="1.6" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#example"><i class="fa fa-check"></i><b>1.6</b> Example</a></li>
+<li class="chapter" data-level="1.7" data-path="monads-in-my-python.html"><a href="monads-in-my-python.html#references"><i class="fa fa-check"></i><b>1.7</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html"><i class="fa fa-check"></i><b>2</b> End-to-End ML with Apache Spark</a><ul>
+<li class="chapter" data-level="2.1" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#acknowledgments-1"><i class="fa fa-check"></i><b>2.1</b> Acknowledgments</a></li>
+<li class="chapter" data-level="2.2" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#references-1"><i class="fa fa-check"></i><b>2.2</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Presentations and Talks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="monads-in-my-python" class="section level1">
+<h1><span class="header-section-number">1</span> Monads in [My Py]thon</h1>
+<div id="acknowledgments" class="section level2">
+<h2><span class="header-section-number">1.1</span> Acknowledgments</h2>
+<p>This talk is inspired and based on the following conferences:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=WNwV3wR4JjA">Monads, in my Python?</a> by Xuanyi Chew</li>
+<li><a href="https://www.youtube.com/watch?v=Mw_Jnn_Y5iA">Scala Monads: Declutter Your Code With Monadic Design</a> by Dan Rosen</li>
+<li><a href="https://www.youtube.com/watch?v=JMP6gI5mLHc">Category Theory, The essence of interface-based design</a> by Erik Meijer</li>
+<li><a href="https://www.youtube.com/watch?v=pMgmKJyWKn8">Type-checked Python in the real world</a> by Carl Meyer</li>
+<li><a href="https://www.youtube.com/watch?v=cj07Fwzamy0">Learning to Love Type Systems</a> by Lauren Tan</li>
+<li><a href="https://www.youtube.com/watch?v=6P06YHc8faw">New Functional Constructs in Scala 3</a> by Martin Odersky</li>
+</ul>
+</div>
+<div id="about-mypy" class="section level2">
+<h2><span class="header-section-number">1.2</span> About MyPy</h2>
+<p>The <em>python-enhancement-proposal-484</em> (<a href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a>) by <a href="https://twitter.com/gvanrossum">Guido van Rossum</a> and <a href="https://twitter.com/JukkaLeh">Jukka Lehtosalo</a> introduced the concept of <strong>type hints</strong> inspired on function annotations (<a href="https://www.python.org/dev/peps/pep-3107/">PEP 3107</a>). This type-hints are completely ignored at runtime but can be used with an optional static type checker. <a href="https://github.com/python/mypy">MyPy</a> is the most popular type checker for python, lead by <a href="https://twitter.com/gvanrossum">Guido van Rossum</a> at <a href="http://mypy-lang.org/about.html">Dropbox</a>.</p>
+<div id="why-types" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Why types</h3>
+<blockquote>
+<p>“A type system is a tractable syntactic method for proving the absence of certain program behaviors by classifying phrases according to the kinds of values they compute.”</p>
+</blockquote>
+<p><span class="citation">(Pierce and Benjamin <a href="#ref-pierce2002types">2002</a>)</span></p>
+<blockquote>
+<p>“A type system is a way to add constraints to your code. The type system is there to help you enforce logic that’s consistent within those constraints.”</p>
+</blockquote>
+<p><span class="citation">(Tan <a href="#ref-tan2018type_systems">2018</a>)</span></p>
+<p>Constraints are desirable because they limit the number of bugs in the program. We can use a strong DSL (domain specific language) to represent the business logic of our application and let the type checker verify the consistency.</p>
+<p>In the <a href="https://dev.to/stereobooster/pragmatic-types-type-systems-vs-tests-4k3e">Pragmatic types</a> blogpost, the author explains the difference between using a type system for type-checking the code vs using unit-tests. Consider the following illustration:</p>
+<p>We achieve type-safety in an application with (1) a robust type system &amp; checker, and (2) by following the functional programming principles.</p>
+<p>Functional programming started as a practical implementation of the following mathematical theories:</p>
+<ul>
+<li><strong>Proof Theory</strong>: logic and mathematical proofs.</li>
+<li><strong>Category Theory</strong>: algebra, composition and abstractions.</li>
+<li><strong>Type Theory</strong>: programs and the idea of prepositions as types.</li>
+</ul>
+<p><strong>Curry-Howard-Lambek correspondence</strong> shows that these three theories are equivalent among each others.</p>
+<p>Consider the following python function:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> addition(x: <span class="bu">int</span>, y: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:    <span class="co"># proposition</span>
+    <span class="cf">return</span> x <span class="op">+</span> y                        <span class="co"># proof</span></code></pre></div>
+<p>The type signature serves as a proposition; given two integers <code>x</code> and <code>y</code>, there exists a function that returns another integer.</p>
+<p>The implementation (body) of the function is the proof of such proposition. In this sense, <strong>types</strong> are propositions and <strong>programs</strong> are proofs. Therefore, we can think of type-checking as proof-checking.</p>
+<p>Good type signatures and a DSLs facilitate the implementation of a particular program and let’s the developer rely on the type-systems to increase productivity.</p>
+</div>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Installation</h3>
+<p>Installation it’s straightforward (<a href="releases.ubuntu.com/18.04/">Ubuntu 18.04</a>):</p>
+<pre class="commandline"><code>$ sudo apt install python3.7 &amp;&amp; python3.7 -m pip install -U mypy</code></pre>
+<p>Now you can run the static type checker with your python programs:</p>
+<pre class="commandline"><code>$ python3.7 -m mypy app.py</code></pre>
+<p>To avoid warnings/errors related to external libraries, use:</p>
+<pre class="commanline"><code>$ python3.7 -m mypy --ignore-missing-imports app.py</code></pre>
+</div>
+</div>
+<div id="about-monads" class="section level2">
+<h2><span class="header-section-number">1.3</span> About Monads</h2>
+<p>The most popular definition of a monad is probably the one phrased by <a href="https://twitter.com/jamesiry">James Iry</a> in his blog-post <a href="https://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html">A Brief, Incomplete, and Mostly Wrong History of Programming Languages</a>.</p>
+<blockquote>
+<p>“A monad is just a monoid in the category of endofunctors.”</p>
+</blockquote>
+<p>Nonetheless, we can find the complete form of this definition in the book <a href="https://books.google.com/books?hl=en&amp;lr=&amp;id=gfI-BAAAQBAJ&amp;oi=fnd&amp;pg=PR5&amp;dq=Categories+for+the+Working+Mathematician&amp;ots=xlLg-1xCZS&amp;sig=f4V84Q2JK9Kvh5-S0XCl1N-xvmQ#v=onepage&amp;q=Categories%20for%20the%20Working%20Mathematician&amp;f=false">Categories for the working mathematician</a>.</p>
+<blockquote>
+<p>“A monad in <span class="math inline">\(X\)</span> is just a monoid in the category of endofunctors of <span class="math inline">\(X\)</span>, with product <span class="math inline">\(\times\)</span> replaced by composition of endofunctors and unit set by the identity endofunctor.”</p>
+</blockquote>
+<p><span class="citation">(Mac Lane <a href="#ref-mac2013categories">2013</a>)</span></p>
+<p>And a more formal definition in this same book:</p>
+<blockquote>
+<p>“Formally, the definition of a monad is like that of a monoid <span class="math inline">\(M\)</span> in sets. The set <span class="math inline">\(M\)</span> of elements of the monoid is replaced by the endofunctor <span class="math inline">\(T: X \to X\)</span> , while the cartesian product <span class="math inline">\(\times\)</span> of two sets is replaced by the composite of two functors, the binary operation <span class="math inline">\(\mu: M \times M \to M\)</span> of multiplication by the trasformation <span class="math inline">\(\mu: T^2 \to T\)</span> and the unit (identity) element <span class="math inline">\(\nu: 1 \to M\)</span> by <span class="math inline">\(\nu: I_x \to T\)</span>.”</p>
+</blockquote>
+<p><span class="citation">(Mac Lane <a href="#ref-mac2013categories">2013</a>)</span></p>
+<p><span class="math inline">\(\mu: T^2 \to T\)</span></p>
+<p>With the help of this <a href="https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem">stackoverflow post</a>, this <a href="http://mathworld.wolfram.com/Monoid.html">wolfram post</a> and the <a href="https://typelevel.org/cats/typeclasses.html">scala cats typelevel docs</a> we can shine some light to this definition:</p>
+<ul>
+<li>A monoid is a representation of a set <span class="math inline">\(S\)</span> closed under an <a href="http://mathworld.wolfram.com/Associative.html">associative</a> binary operation and has an <a href="http://mathworld.wolfram.com/IdentityElement.html">identity element</a> or unit.</li>
+</ul>
+<p>A type <code>A</code> can form a semigroup if it has an associative binary operation <code>combine</code> that satisfies <code>combine(x, combine(y, z)) = combine(combine(x, y), z)</code> for any choice of <code>x</code>, <code>y</code>, and <code>z</code> in <code>A</code>.</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Semigroup[A] {
+    <span class="kw">def</span> <span class="fu">combine</span>(x: A, y: A): A
+}
+
+<span class="kw">object</span> Semigroup {
+    <span class="kw">def</span> combine[A](x: A, y: A)(<span class="kw">implicit</span> sg: Semigroup[A]): A =
+        sg.<span class="fu">combine</span>(x, y)
+}</code></pre></div>
+<p>We can create a simple example for <code>Int</code>:</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">implicit</span> <span class="kw">val</span> integerAdditionSemigroup: Semigroup[Int] =
+    <span class="kw">new</span> Semigroup[Int] {
+        <span class="kw">def</span> <span class="fu">combine</span>(x: Int, y: Int): Int = x + y
+    }</code></pre></div>
+<p>Example:</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Semigroup.<span class="fu">combine</span>[Int](<span class="dv">1</span>, <span class="dv">2</span>)
+<span class="co">// res0: Int = 3</span>
+
+Semigroup.<span class="fu">combine</span>[Int](<span class="dv">1</span>, Semigroup.<span class="fu">combine</span>[Int](<span class="dv">2</span>, <span class="dv">3</span>))
+<span class="co">// res1: Int = 6</span></code></pre></div>
+<p>To define a monoid we need to extend the <code>Semigroup</code> with an empty value such that the following holds true: <code>combine(x, empty) = combine(empty, x) = x</code></p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Monoid[A] <span class="kw">extends</span> Semigroup[A] {
+  <span class="kw">def</span> empty: A
+}
+
+<span class="kw">object</span> Monoid {
+    <span class="kw">def</span> empty[A](<span class="kw">implicit</span> m: Monoid[A]): A = m.<span class="fu">empty</span>
+    <span class="kw">def</span> combine[A](x: A, y: A)(<span class="kw">implicit</span> m: Monoid[A]): A =
+        m.<span class="fu">combine</span>(x, y)
+}
+
+<span class="co">// Int monoid</span>
+<span class="kw">implicit</span> <span class="kw">val</span> integerAdditionMonoid: Monoid[Int] = <span class="kw">new</span> Monoid[Int] {
+    <span class="kw">def</span> empty: Int = <span class="dv">0</span>
+    <span class="kw">def</span> <span class="fu">combine</span>(x: Int, y: Int): Int = x + y
+}</code></pre></div>
+<p>We can verify the <code>combine</code> operation with our empty element:</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Monoid.<span class="fu">combine</span>[Int](<span class="dv">1</span>, Monoid.<span class="fu">empty</span>[Int])
+<span class="co">// res3: Int = 1</span></code></pre></div>
+<ul>
+<li>A <strong>functor</strong> is a mathematical structure-preserving transformation between categories. And <strong>endofunctor</strong> is a functor from one category back to the same category.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Functor[F[_]] {
+  <span class="kw">def</span> map[A, B](fa: F[A])(f: A =&gt; B): F[B]
+}</code></pre></div>
+<ul>
+<li>A <strong>category</strong> is a collection of (1) objects, (2) morphisms or arrows for each pair of objects, and a (3) binary operation for composition between arrows. See <a href="http://mathworld.wolfram.com/Category.html">more about categories</a>.</li>
+</ul>
+<p>According to Erik Meijer in this talk “Category Theory, The essence of interface-based design” we can use the following following equivalences as a practival guide:</p>
+<ul>
+<li><code>Category</code> = Programming Language</li>
+<li><code>Objects</code> = Types</li>
+<li><code>Morphism</code> = functions, static methods, properties : <code>f(a: A): B</code> or <code>f: B</code> an <code>A</code></li>
+</ul>
+<p><span class="citation">(Meijer <a href="#ref-meijer2018category_theory">2015</a>)</span></p>
+<div class="figure">
+<img src="../img/category-theory.png" alt="Categories" />
+<p class="caption">Categories</p>
+</div>
+</div>
+<div id="monads-in-scala" class="section level2">
+<h2><span class="header-section-number">1.4</span> Monads in Scala</h2>
+<p>The Scala language provides a rich set of functional programming constructs. Consider the following code-snipped shown at the conference “Scale by the Bay - 2018” by Martin Odersky to define an abstract monad in Scala:</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Functor[F[_]] {
+    <span class="kw">def</span> map[A, B](<span class="kw">this</span> x: F[A])(f: A =&gt; B): F[B]
+}
+
+<span class="kw">trait</span> Monad[F[_]] <span class="kw">extends</span> Functor[F] {
+    <span class="kw">def</span> pure[A](x: A): F[A]
+    <span class="kw">def</span> flatMap[A, B](<span class="kw">this</span> x: F[A])(f: A =&gt; F[B]): F[B]
+    <span class="kw">def</span> map[A, B](<span class="kw">this</span> x: F[A])(f: A =&gt; B): F[B] =
+        x.<span class="fu">flatMap</span>(f `andThen` pure)
+}</code></pre></div>
+<p>Now we can use extension methods (Scala 3) to create a particular implementation:</p>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">implicit</span> <span class="kw">object</span> ListMonad <span class="kw">extends</span> Monad[List] {
+    <span class="kw">def</span> flatMap[A, B](<span class="kw">this</span> xs: List[A])(f: A =&gt; List[B]): List[B] =
+        xs.<span class="fu">flatMap</span>(f)
+    <span class="kw">def</span> pure[A](x: A): List[A] = List(x)
+}</code></pre></div>
+<p><span class="citation">(Odersky <a href="#ref-odersky2018scala3">2018</a>)</span></p>
+</div>
+<div id="monads-in-python" class="section level2">
+<h2><span class="header-section-number">1.5</span> Monads in python</h2>
+<p><a href="https://github.com/python/typing/issues/548">Without higher-kinded types</a>. For now.</p>
+<p>Consider the following python functions:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">
+<span class="kw">def</span> div(num: <span class="bu">int</span>, den: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:
+    <span class="cf">return</span> num <span class="op">/</span> den
+
+<span class="kw">def</span> factorial(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:
+    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:
+        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">&quot;Factorial is defined over non-negative numbers&quot;</span>)
+   <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> n <span class="op">*</span> factorial(n<span class="dv">-1</span>)</code></pre></div>
+<p>If we would like to compose both functions we would likely have to implement several safe guards to avoid runtime erros and invalid inputs. What if we use python’s <code>None</code> naively instead of error-handling for the <code>div</code> function?</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">
+<span class="kw">def</span> div(num: <span class="bu">int</span>, den: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:
+    <span class="cf">if</span> den <span class="op">==</span> <span class="dv">0</span>:
+        <span class="cf">return</span> <span class="va">None</span>
+    <span class="cf">return</span> num <span class="op">/</span> den</code></pre></div>
+<p>We still have composability problems (see <a href="https://youtu.be/WNwV3wR4JjA?t=778">this diagram</a>). Moreover, our types are incorrect!</p>
+<ul>
+<li><strong>Q</strong>: Is there a way we can generalize this?</li>
+<li><strong>A</strong>: Monads!</li>
+</ul>
+<p>Let’s create an <code>Option</code> monad.</p>
+<p>For simplicity, let’s use a higher-order function that allows us to compose two functions:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> typing <span class="im">import</span> Callable, TypeVar
+A <span class="op">=</span> TypeVar(<span class="st">&#39;A&#39;</span>)
+B <span class="op">=</span> TypeVar(<span class="st">&#39;B&#39;</span>)
+C <span class="op">=</span> TypeVar(<span class="st">&#39;C&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> compose(this: Callable[[A], B], and_then: Callable[[B], C]) <span class="op">-&gt;</span> Callable[[A], C]:
+    <span class="cf">return</span> <span class="kw">lambda</span> x: and_then(this(x))</code></pre></div>
+<p>Now let’s define our option:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod
+<span class="im">from</span> typing <span class="im">import</span> Union, Generic, TypeVar, Callable
+A <span class="op">=</span> TypeVar(<span class="st">&quot;A&quot;</span>, covariant<span class="op">=</span><span class="va">True</span>)
+B <span class="op">=</span> TypeVar(<span class="st">&quot;B&quot;</span>)
+T <span class="op">=</span> TypeVar(<span class="st">&quot;T&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Option(Generic[A], ABC):
+    <span class="at">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:
+        <span class="cf">pass</span>
+    <span class="at">@abstractmethod</span>
+    <span class="kw">def</span> get(<span class="va">self</span>, or_else: B) <span class="op">-&gt;</span> Union[A, B]:
+        <span class="cf">pass</span>
+    <span class="at">@abstractmethod</span>
+    <span class="kw">def</span> flat_map(<span class="va">self</span>, f: Callable[[A], <span class="st">&#39;Option[B]&#39;</span>]) <span class="op">-&gt;</span> <span class="st">&#39;Option[B]&#39;</span>:
+        <span class="cf">pass</span>
+    <span class="at">@staticmethod</span>
+    <span class="kw">def</span> pure(x: T) <span class="op">-&gt;</span> <span class="st">&#39;Option[T]&#39;</span>:
+        <span class="cf">return</span> Some(x)
+    <span class="kw">def</span> <span class="bu">map</span>(<span class="va">self</span>, f: Callable[[A], B]) <span class="op">-&gt;</span> <span class="st">&#39;Option[B]&#39;</span>:
+        <span class="cf">return</span> <span class="va">self</span>.flat_map(compose(this<span class="op">=</span>f, and_then<span class="op">=</span><span class="va">self</span>.pure))
+    <span class="at">@abstractmethod</span>
+    <span class="kw">def</span> foreach(<span class="va">self</span>, f: Callable[[A], <span class="va">None</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="cf">pass</span>
+    <span class="at">@abstractmethod</span>
+    <span class="kw">def</span> flatten(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="st">&#39;Option&#39;</span>:
+        <span class="cf">pass</span></code></pre></div>
+<p>An <code>Option[A]</code> can take <code>Some[A]</code> value or be <code>Empty</code>. We can define the <code>Some</code> type:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Some(Option[A]):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value: A) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="va">self</span>._value <span class="op">=</span> value
+    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:
+        <span class="cf">return</span> <span class="ss">f&quot;Some(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_value<span class="sc">}</span><span class="ss">)&quot;</span>
+    <span class="kw">def</span> get(<span class="va">self</span>, or_else: B) <span class="op">-&gt;</span> Union[A, B]:
+        <span class="cf">return</span> <span class="va">self</span>._value
+    <span class="kw">def</span> flat_map(<span class="va">self</span>, f: Callable[[A], Option[B]]) <span class="op">-&gt;</span> Option[B]:
+        <span class="cf">return</span> f(<span class="va">self</span>._value)
+    <span class="kw">def</span> foreach(<span class="va">self</span>, f: Callable[[A], <span class="va">None</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:
+        f(<span class="va">self</span>._value)
+    <span class="kw">def</span> flatten(<span class="va">self</span>) <span class="op">-&gt;</span> Option:
+        <span class="cf">if</span> <span class="bu">isinstance</span>(<span class="va">self</span>._value, Option):
+            <span class="cf">return</span> <span class="va">self</span>._value.flatten()
+        <span class="cf">return</span> <span class="va">self</span></code></pre></div>
+<p>The <code>Empty</code> class is defined as:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Empty(Option[A]):
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="cf">pass</span>
+    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:
+        <span class="cf">return</span> <span class="st">&quot;Empty&quot;</span>
+    <span class="kw">def</span> get(<span class="va">self</span>, or_else: B) <span class="op">-&gt;</span> Union[A, B]:
+        <span class="cf">if</span> <span class="bu">isinstance</span>(or_else, <span class="pp">Exception</span>):
+            <span class="cf">raise</span> or_else
+        <span class="cf">return</span> or_else
+    <span class="kw">def</span> flat_map(<span class="va">self</span>, f: Callable[[A], Option[B]]) <span class="op">-&gt;</span> Option[B]:
+        <span class="cf">return</span> Empty[B]()
+    <span class="kw">def</span> foreach(<span class="va">self</span>, f: Callable[[A], <span class="va">None</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:
+        <span class="cf">return</span> <span class="va">None</span>
+    <span class="kw">def</span> flatten(<span class="va">self</span>) <span class="op">-&gt;</span> Option:
+        <span class="cf">return</span> <span class="va">self</span></code></pre></div>
+<p>Now we can use our option type!</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Two options</span>
+opt_a: Option[<span class="bu">int</span>] <span class="op">=</span> Some(<span class="dv">2</span>)
+opt_b: Option[<span class="bu">int</span>] <span class="op">=</span> Some(<span class="dv">5</span>)
+<span class="co"># Sum a+b</span>
+opt_c <span class="op">=</span> opt_a.flat_map(<span class="kw">lambda</span> a: opt_b.<span class="bu">map</span>(<span class="kw">lambda</span> b: a <span class="op">+</span> b))
+<span class="co"># Sum c+d</span>
+opt_d: Option[<span class="bu">int</span>] <span class="op">=</span> Empty()
+opt_e <span class="op">=</span> opt_c.flat_map(<span class="kw">lambda</span> c: opt_d.<span class="bu">map</span>(<span class="kw">lambda</span> d: c <span class="op">+</span> d))
+<span class="co"># Print results</span>
+<span class="bu">print</span>(<span class="ss">f&quot;opt_c = </span><span class="sc">{</span>opt_c<span class="sc">}</span><span class="ch">\n</span><span class="ss">opt_e = </span><span class="sc">{</span>opt_e<span class="sc">}</span><span class="ss">&quot;</span>)</code></pre></div>
+<pre><code>## opt_c = Some(7)
+## opt_e = Empty</code></pre>
+<p>Let’s define some decorators:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> typing <span class="im">import</span> Callable, TypeVar
+T <span class="op">=</span> TypeVar(<span class="st">&quot;T&quot;</span>)
+A <span class="op">=</span> TypeVar(<span class="st">&quot;A&quot;</span>)</code></pre></div>
+<p>Decorate a function to output <code>Option</code> type:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> to_option(fn: Callable[..., T]) <span class="op">-&gt;</span> Callable[..., Option[T]]:
+    <span class="kw">def</span> inner(<span class="op">*</span>args, <span class="op">**</span>kwargs) <span class="op">-&gt;</span> Option[T]:
+        <span class="cf">try</span>:
+            value <span class="op">=</span> fn(<span class="op">*</span>args, <span class="op">**</span>kwargs)
+            <span class="cf">if</span> value <span class="kw">is</span> <span class="va">None</span>:
+                <span class="cf">return</span> Empty[T]()
+            <span class="cf">return</span> Some(value)
+        <span class="cf">except</span> <span class="pp">Exception</span>:
+            <span class="cf">return</span> Empty[T]()
+    <span class="cf">return</span> inner</code></pre></div>
+<p>Decorate a function facilitate <code>Option</code> composability;</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> composable(fn: Callable[..., Option[T]]) <span class="op">-&gt;</span> Callable[..., Option[T]]:
+    <span class="kw">def</span> inner(<span class="op">*</span>args, <span class="op">**</span>kwargs) <span class="op">-&gt;</span> Option[T]:
+        new_args <span class="op">=</span> []
+        new_kwargs <span class="op">=</span> {}
+        <span class="cf">for</span> arg <span class="kw">in</span> args:
+            new_arg <span class="op">=</span> arg <span class="cf">if</span> <span class="bu">isinstance</span>(arg, Option) <span class="cf">else</span> Some(arg)
+            new_arg.foreach(<span class="kw">lambda</span> value: new_args.append(value))
+        <span class="cf">for</span> k <span class="kw">in</span> kwargs:
+            v <span class="op">=</span> kwargs[k]
+            new_val <span class="op">=</span> v <span class="cf">if</span> <span class="bu">isinstance</span>(v, Option) <span class="cf">else</span> Some(v)
+            new_val.foreach(<span class="kw">lambda</span> value: new_kwargs.update({k: value}))
+        <span class="cf">return</span> fn(<span class="op">*</span>new_args, <span class="op">**</span>new_kwargs)
+    <span class="cf">return</span> inner</code></pre></div>
+<p>Now we are ready to define our functions:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="at">@composable</span>
+<span class="at">@to_option</span>
+<span class="kw">def</span> div(num: <span class="bu">int</span>, den: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:
+    <span class="cf">return</span> num <span class="op">/</span> den</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="at">@composable</span>
+<span class="at">@to_option</span>
+<span class="kw">def</span> factorial(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:
+    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:
+        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">&quot;Factorial is defined over non-negative numbers&quot;</span>)
+    <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> n <span class="op">*</span> factorial(n<span class="dv">-1</span>)</code></pre></div>
+<p>Our monadic values allows us to easily compose between <code>Objects</code> (see <a href="https://youtu.be/WNwV3wR4JjA?t=1034">this</a>).</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="dv">5</span>
+b <span class="op">=</span> <span class="dv">0</span>
+res <span class="op">=</span> div(a, b)
+<span class="bu">print</span>(<span class="ss">f&quot;div(a,b) = </span><span class="sc">{</span>res<span class="sc">}</span><span class="ss">&quot;</span>)</code></pre></div>
+<pre><code>## div(a,b) = Empty</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="dv">15</span>
+b <span class="op">=</span> <span class="dv">0</span>
+c <span class="op">=</span> <span class="dv">3</span>
+d <span class="op">=</span> <span class="dv">5</span>
+res_1 <span class="op">=</span> div(d, div(a, b))
+res_2 <span class="op">=</span> div(d, div(a, c))
+<span class="bu">print</span>(<span class="ss">f&quot;div(d, div(a, b) = </span><span class="sc">{</span>res_1<span class="sc">}</span><span class="ch">\n</span><span class="ss">div(d, div(a, c)) = </span><span class="sc">{</span>res_2<span class="sc">}</span><span class="ss">&quot;</span>)</code></pre></div>
+<pre><code>## div(d, div(a, b) = Empty
+## div(d, div(a, c)) = Some(1.0)</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">a <span class="op">=</span> <span class="dv">10</span>
+b <span class="op">=</span> <span class="dv">-2</span>
+res_1 <span class="op">=</span> div(a, b)
+res_2 <span class="op">=</span> factorial(res_1)
+<span class="bu">print</span>(<span class="ss">f&quot;div(a, b) = </span><span class="sc">{</span>res_1<span class="sc">}</span><span class="ch">\n</span><span class="ss">factorial(res_1)= </span><span class="sc">{</span>res_2<span class="sc">}</span><span class="ss">&quot;</span>)</code></pre></div>
+<pre><code>## div(a, b) = Some(-5.0)
+## factorial(res_1)= Empty</code></pre>
+<p>Great!</p>
+</div>
+<div id="example" class="section level2">
+<h2><span class="header-section-number">1.6</span> Example</h2>
+<p>add a more complex example.</p>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">1.7</span> References</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-pierce2002types">
+<p>Pierce, Benjamin C, and C Benjamin. 2002. <em>Types and Programming Languages</em>. MIT press.</p>
+</div>
+<div id="ref-tan2018type_systems">
+<p>Tan, Lauren. 2018. “Learning to Love Type Systems.” Youtube - DotJs. <a href="https://www.youtube.com/watch?v=cj07Fwzamy0" class="uri">https://www.youtube.com/watch?v=cj07Fwzamy0</a>.</p>
+</div>
+<div id="ref-mac2013categories">
+<p>Mac Lane, Saunders. 2013. <em>Categories for the Working Mathematician</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-meijer2018category_theory">
+<p>Meijer, Erik. 2015. “Category Theory, the Essence of Interface-Based Design.” Youtube - FooCafe. <a href="https://www.youtube.com/watch?v=JMP6gI5mLHc" class="uri">https://www.youtube.com/watch?v=JMP6gI5mLHc</a>.</p>
+</div>
+<div id="ref-odersky2018scala3">
+<p>Odersky, Martin. 2018. “New Functional Constructs in Scala 3.” Youtube - FunctionalTV. <a href="https://www.youtube.com/watch?v=6P06YHc8faw" class="uri">https://www.youtube.com/watch?v=6P06YHc8faw</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="end-to-end-ml-with-apache-spark.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["presentations-by-rhdzmota.pdf", "presentations-by-rhdzmota.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
