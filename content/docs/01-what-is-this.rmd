@@ -1,0 +1,6 @@
+
+# What is this?
+
+```{r setup-what-is-this, include=FALSE}
+reticulate::use_virtualenv("../../venv")
+```

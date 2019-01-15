@@ -1,0 +1,28 @@
+--- 
+title: "Talks & Presentations"
+author: "Rodrigo Hernández Mota"
+date: "`r Sys.Date()`"
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+site: bookdown::bookdown_site
+description: "Let this book be a register of my talks and presentations."
+url: 'https\://rhdzmota.github.io/presentations/'
+github-repo: rhdzmota/presentations
+---
+
+# Preface {-}
+
+These are my talks and presentations in a nice & readable format. 
+
+## How to read this book? {-}
+
+This is not a real book. Each chapter contains notes used as a reference guide to creates the slides.
+
+## About the author {-}
+
+to be defined. 

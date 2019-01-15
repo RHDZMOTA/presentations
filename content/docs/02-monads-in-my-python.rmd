@@ -1,9 +1,11 @@
 
-```{r setup, include=FALSE}
-reticulate::use_python("/usr/bin/python3.7")
+# Monads in [My Py]thon
+
+```{r setup-python-monads, include=FALSE}
+reticulate::use_python("/mnt/d/Documents/Github/rhdzmota/presentations/venv/bin/python3.7")
 ```
 
-# Acknowledgments
+## Acknowledgments
 
 This talk is inspired and based on the following conferences:
 
@@ -21,7 +23,7 @@ This talk is inspired and based on the following conferences:
 [Category Theory, The essence of interface-based design]: https://www.youtube.com/watch?v=JMP6gI5mLHc
 [New Functional Constructs in Scala 3]: https://www.youtube.com/watch?v=6P06YHc8faw
 
-# About MyPy
+## About MyPy
 
 The *python-enhancement-proposal-484* ([PEP 484]) by [Guido van Rossum] and [Jukka Lehtosalo] introduced
 the concept of **type hints** inspired on function annotations ([PEP 3107]). This type-hints are completely 
@@ -35,7 +37,7 @@ most popular type checker for python, lead by [Guido van Rossum] at [Dropbox].
 [Jukka Lehtosalo]: https://twitter.com/JukkaLeh
 [Dropbox]: http://mypy-lang.org/about.html
 
-## Why types
+### Why types
 
 > "A type system is a tractable syntactic method for proving the
 absence of certain program behaviors by classifying phrases 
@@ -56,8 +58,6 @@ of our application and let the type checker verify the consistency.
 In the [Pragmatic types] blogpost, the author explains the difference between
 using a type system for type-checking the code vs using unit-tests. Consider
 the following illustration:
-
-![Types-Checking vs Tests](https://res.cloudinary.com/practicaldev/image/fetch/s--YIefgqbH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_400/https://thepracticaldev.s3.amazonaws.com/i/veud7eoptty10opiig5o.png)
 
 [Pragmatic types]: https://dev.to/stereobooster/pragmatic-types-type-systems-vs-tests-4k3e
 
@@ -92,7 +92,7 @@ we can think of type-checking as proof-checking.
 Good type signatures and a DSLs facilitate the implementation of a particular program
 and let's the developer rely on the type-systems to increase productivity.
 
-## Installation
+### Installation
 
 Installation it's straightforward ([Ubuntu 18.04]):
 
@@ -112,7 +112,7 @@ $ python3.7 -m mypy --ignore-missing-imports app.py
 
 [Ubuntu 18.04]: releases.ubuntu.com/18.04/
 
-# About Monads
+## About Monads
 
 The most popular definition of a monad is probably the one phrased by [James Iry]
 in his blog-post [A Brief, Incomplete, and Mostly Wrong History of Programming Languages].
@@ -124,7 +124,7 @@ in his blog-post [A Brief, Incomplete, and Mostly Wrong History of Programming L
 
 Nonetheless, we can find the complete form of this definition in the book [Categories for the working mathematician].
 
-> "A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor."
+> "A monad in $X$ is just a monoid in the category of endofunctors of $X$, with product $\times$ replaced by composition of endofunctors and unit set by the identity endofunctor."
 
 [@mac2013categories]
 
@@ -134,12 +134,14 @@ And a more formal definition in this same book:
 
 > "Formally, the definition of a monad is like that of a monoid $M$ in sets. The set $M$ of elements of the monoid
 is replaced by the endofunctor $T: X \to X$ , while the cartesian
-product $×$ of two sets is replaced by the composite of two functors,
-the binary operation $\mu: M × M \to M$ of multiplication by the
+product $\times$ of two sets is replaced by the composite of two functors,
+the binary operation $\mu: M \times M \to M$ of multiplication by the
 trasformation $\mu: T^2 \to T$ and the unit (identity) element $\nu: 1 \to M$
 by $\nu: I_x \to T$."
 
 [@mac2013categories]
+
+$\mu: T^2 \to T$
 
 With the help of this [stackoverflow post], this [wolfram post] and the [scala cats typelevel docs]
 we can shine some light to this definition:
@@ -231,8 +233,7 @@ the following following equivalences as a practival guide:
 
 [@meijer2018category_theory]
 
-![Categories](https://upload.wikimedia.org/wikipedia/commons/0/0a/Lead_Photo_For_Category_%28mathematics%290-41319275833666325.png)
-
+![Categories](../img/category-theory.png)
 
 [stackoverflow post]: https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem
 [wolfram post]: http://mathworld.wolfram.com/Monoid.html
@@ -241,7 +242,7 @@ the following following equivalences as a practival guide:
 [identity element]: http://mathworld.wolfram.com/IdentityElement.html
 [more about categories]: http://mathworld.wolfram.com/Category.html
 
-# Monads in Scala
+## Monads in Scala
 
 The Scala language provides a rich set of functional programming constructs.
 Consider the following code-snipped shown at the conference "Scale by the Bay - 2018" by Martin Odersky
@@ -272,7 +273,7 @@ implicit object ListMonad extends Monad[List] {
 
 [@odersky2018scala3]
 
-# Monads in python
+## Monads in python
 
 [Without higher-kinded types]. For now.
 
@@ -527,9 +528,9 @@ print(f"div(a, b) = {res_1}\nfactorial(res_1)= {res_2}")
 
 Great!
 
-# Example
+## Example
 
 add a more complex example.
 
 
-# References
+## References

@@ -3,8 +3,10 @@
 # Install git & jq
 sudo apt install -y git jq
 
-# Install python
+# Install python and venv
 sudo apt install -y python3.7
+python3.7 -m pip install virtualenv
+python3.7 -m virtualenv --python=python3.7 venv
 
 # Install java 8
 sudo apt install -y openjdk-8-jdk
@@ -15,9 +17,9 @@ sudo apt install -y pandoc pandoc-citeproc
 # Install R & Dependencies
 sudo apt install -y r-base
 sudo apt install -y libcurl4-openssl-dev libssl-dev libxml2-dev r-cran-xml
-echo "install.packages(c('rmarkdown', 'tinytex', 'reticulate'))" | R --vanilla --quiet
-echo "install.packages('devtools', dependencies = TRUE, repos = 'http://cran.us.r-project.org')" | R --vanilla --quiet
-echo "devtools::install_github('cboettig/knitcitations')" | R --vanilla --quiet
+printf "install.packages(c('rmarkdown', 'tinytex', 'reticulate', 'bookdown'), repos = 'http://cran.us.r-project.org')" | sudo R --vanilla --quiet
+printf "install.packages('devtools', dependencies = TRUE, repos = 'http://cran.us.r-project.org')" | R --vanilla --quiet
+printf "devtools::install_github('cboettig/knitcitations')" | R --vanilla --quiet
 
 # Install pdflatex
 sudo apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra

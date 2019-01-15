@@ -69,6 +69,7 @@ jrebel.lic
 
 _site/
 src/main/resources/microsite/slides/*.html
+src/main/resources/microsite/pdf/*.pdf
 
 .mypy_cache*
 .vscode

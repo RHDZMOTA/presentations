@@ -1,9 +1,13 @@
 {
-  "01-monads-in-my-python": {
+  "01-what-is-this": {
+    "title": "What is this?",
+    "author": "Rodrigo Hernández Mota"
+  },
+  "02-monads-in-my-python": {
     "title": "Monads in [My Py]thon",
     "author": "Rodrigo Hernández Mota"
   },
-  "02-end-to-end-ml-with-apache-spark": {
+  "03-end-to-end-ml-with-apache-spark": {
     "title": "End-To-End Machine Learning with Apache Spark",
     "author": "Rodrigo Hernández Mota"
   }

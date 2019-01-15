@@ -3,26 +3,30 @@ import microsites._
 
 enablePlugins(MicrositesPlugin)
 
-lazy val root = (project in file(".")).
+lazy val content  = Project(id="content", base=file("content"))
+
+lazy val site = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "com.rhdzmota",
       scalaVersion := "2.12.8",
       version      := "0.0.0-SNAPSHOT"
     )),
-    name := "presentations",
+    name := "site",
     micrositeName := "Presentations",
     micrositeDescription      := "Talks and Presentations",
     micrositeBaseUrl          := "/presentations",
     micrositeDocumentationUrl := "/presentations/docs.html",
     micrositeAuthor           := "rhdzmota",
+    micrositeTwitterCreator   := "@rhdzmota",
     micrositeGitterChannel    := true,
     micrositeGitterChannelUrl := "rhdzmota-presentations/community",
     micrositeHomepage         := "https://rhdzmota.github.io/presentations",
     micrositeGithubOwner      := "rhdzmota",
     micrositeGithubRepo       := "presentations",
     micrositeHighlightTheme   := "atom-one-light",
-    micrositeHighlightLanguages ++= Seq("haskell", "fsharp", "scala", "python", "java"),
+    micrositeHighlightLanguages ++= Seq("haskell", "fsharp", "scala", "python", "java", "bash", "r"),
+    micrositeShareOnSocial    := true,
     micrositeCDNDirectives    := CdnDirectives(
       jsList = List(
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML,https://rhdzmota.github.io/presentations/js/mathjax-config.js"

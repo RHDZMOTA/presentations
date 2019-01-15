@@ -1,0 +1,4 @@
+book_filename: "book"
+output_dir: "src/main/resources/microsite/book"
+rmd_subdir: [".microdegree/source/"]
+delete_merged_file: true

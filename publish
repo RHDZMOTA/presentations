@@ -5,8 +5,8 @@ makeSlides () {
   do
     echo "Generating reveal.js slide for: ${slide}"
     session=$(sed -e 's/^"//' -e 's/"$//' <<< "$slide")
-    title=$(cat slides/config.json | jq -r --arg v "$session" '."\($v)".title')
-    author=$(cat slides/config.json | jq -r --arg v "$session" '."\($v)".author')
+    title=$(cat content/slides/config.json | jq -r --arg v "$session" '."\($v)".title')
+    author=$(cat content/slides/config.json | jq -r --arg v "$session" '."\($v)".author')
     pandoc \
             --from markdown+tex_math_single_backslash+inline_code_attributes \
             --standalone --mathjax \
@@ -16,75 +16,116 @@ makeSlides () {
             -V theme:night \
             "--metadata=title:\"${title}\"" \
             "--metadata=author:\"${author}\"" \
-            slides/${session}.md
-  done < <(cat slides/config.json | jq 'keys | .[]')
+            content/slides/${session}.md
+  done < <(cat content/slides/config.json | jq 'keys | .[]')
 }
 
 makeDocs () {
+  echo "Generating source files..."
+  sbt content/tut
   while read -r rdoc
   do
     doc=$(sed -e 's/^"//' -e 's/"$//' <<< "$rdoc")
-    title=$(cat docs/config.json | jq -r --arg v "$doc" '."\($v)".title')
-    author=$(cat docs/config.json | jq -r --arg v "$doc" '."\($v)".author')
+    title=$(cat $PWD/content/docs/config.json | jq -r --arg v "$doc" '."\($v)".title')
+    author=$(cat $PWD/content/docs/config.json | jq -r --arg v "$doc" '."\($v)".author')
     echo "Generating documentation for: ${doc}"
-    printf "rmarkdown::render('$PWD/docs/$doc.rmd', clean=FALSE, run_pandoc=FALSE)" | R --vanilla --quiet
-    pandoc +RTS -K512m -RTS docs/${doc}.utf8.md \
-        --to markdown_github \
+    printf "rmarkdown::render('.microdegree/source/$doc.rmd', clean=FALSE, run_pandoc=FALSE)" | R --vanilla --quiet
+    pandoc +RTS -K512m -RTS $PWD/.microdegree/source/${doc}.utf8.md \
+        --to markdown_github+raw_tex+tex_math_dollars \
         --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash \
-        --output docs/${doc}.md \
+        --output $PWD/.microdegree/site/temp \
         --standalone \
-        '--metadata=bibliography:"references.bib"'
-    echo -e "---\nlayout: docs\ntitle: \"${title}\"\nsection: \"docs\" \nauthor: \"${author}\"\n---\n" | cat - docs/${doc}.md > docs/temp
-    sed -i -e 's/``` tut/```tut/g' docs/temp
-    sed -i -e 's/``` scala/```scala/g' docs/temp
-    sed -i -e 's/``` python/```python/g' docs/temp
-    mv docs/temp src/main/tut/docs/${doc}.md
-    if [[ -d "docs/${doc}_files" ]]; then
-        rm -rf src/main/tut/docs/${doc}_files
-        mv docs/${doc}_files src/main/tut/docs/${doc}_files
+        '--metadata=bibliography:"content/references.bib"'
+    echo -e "---\nlayout: docs\ntitle: \"${title}\"\nsection: \"docs\" \nauthor: \"${author}\"\n---\n" | cat - $PWD/.microdegree/site/temp > $PWD/.microdegree/site/${doc}.md
+    sed -i -e 's/``` scala/```scala/g' $PWD/.microdegree/site/${doc}.md
+    sed -i -e 's/``` python/```python/g' $PWD/.microdegree/site/${doc}.md
+    cp $PWD/.microdegree/site/${doc}.md src/main/tut/docs/${doc}.md
+    if [[ -d "$PWD/.microdegree/site/${doc}_files" ]]; then
+        if [[ "$PWD/src/main/tut/docs/${doc}_files" ]]; then
+            rm -rf $PWD/src/main/tut/docs/${doc}_files
+        fi
+        mv $PWD/.microdegree/site/${doc}_files $PWD/src/main/tut/docs/${doc}_files
     fi
-    rm docs/${doc}.knit.md docs/${doc}.utf8.md docs/${doc}.md
-  done < <(cat docs/config.json | jq 'keys | .[]')
+    rm $PWD/.microdegree/source/${doc}.knit.md $PWD/.microdegree/source/${doc}.utf8.md
+  done < <(cat content/docs/config.json | jq 'keys | .[]')
+}
+
+makeBook () {
+    cp $PWD/content/book/_bookdown.yml _bookdown.yml
+    cp $PWD/content/book/_output.yml _output.yml
+    cp $PWD/content/book/index.rmd index.rmd
+    cp $PWD/content/book/references.rmd $PWD/.microdegree/source/references.rmd
+    output_dir="$PWD/src/main/resources/microsite/book"
+    printf "bookdown::render_book('index.rmd', bookdown::gitbook(
+        fig_caption=TRUE,
+        split_bib=TRUE,
+        pandoc_args=c(
+            '--metadata=link-citations:true',
+            '--metadata=bibliography:\"${PWD}/content/references.bib\"')
+        ))" | R --vanilla --quiet
+    printf "bookdown::render_book('index.rmd', bookdown::pdf_book(
+        fig_caption=TRUE,
+        pandoc_args=c(
+            '--metadata=link-citations:true',
+            '--metadata=bibliography:\"${PWD}/content/references.bib\"')
+        ))" | R --vanilla --quiet
+    printf "bookdown::render_book('index.rmd', bookdown::epub_book(
+        fig_caption=TRUE,
+        pandoc_args=c(
+            '--metadata=link-citations:true',
+            '--metadata=bibliography:\"${PWD}/content/references.bib\"')
+        ))" | R --vanilla --quiet
 }
 
 makePdfs () {
   while read -r mdoc
   do
-    module="$(basename ${mdoc} .md)"
-    title=$(cat docs/config.json | jq -r --arg v "$module" '."\($v)".title')
-    author=$(cat docs/config.json | jq -r --arg v "$module" '."\($v)".author')
+    module="$(basename ${mdoc} .rmd)"
+    title=$(cat content/docs/config.json | jq -r --arg v "$module" '."\($v)".title')
+    author=$(cat content/docs/config.json | jq -r --arg v "$module" '."\($v)".author')
     echo "Generating pdf for: ${module}"
     if [[ ! -d "src/main/resources/microsite/pdf" ]]; then
         mkdir -p src/main/resources/microsite/pdf
     fi
-    pdf_path="${PWD}/src/main/resources/microsite/pdf/${module}.pdf"
-    file_path="${PWD}/target/scala-2.12/resource_managed/main/jekyll/docs/${module}.md"
-    resources_path="target/scala-2.12/resource_managed/main /jekyll/docs/${module}_files"
-    pandoc +RTS -K512m -RTS ${file_path} \
-            --to latex \
-            --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash \
-            --output ${pdf_path} \
-            --template template.tex \
-            --highlight-style tango \
-            --latex-engine xelatex \
-            --variable mainfont="Linux Libertine O" \
-            --variable graphics=yes \
-            "--metadata=title:\"${title}\"" \
-            --variable 'geometry:margin=1.5in' \
-            --variable urlcolor=blue \
-            --variable fontsize=11pt \
-            --variable 'compact-title:yes'
-  done < <(find target/scala-2.12/resource_managed/main/jekyll/docs -name "*.md")
+    source_path="$PWD/.microdegree/source/${module}.rmd"
+    pdf_path="$PWD/src/main/resources/microsite/pdf/${module}.pdf"
+    printf "rmarkdown::render('$source_path',
+        output_format='pdf_document',
+        output_file='${pdf_path}',
+        output_options=list(pandoc_args=c(
+            '--metadata=title:\"${title}\"',
+            '--metadata=author:\"${author}\"',
+            '--metadata=bibliography:\"${PWD}/content/references.bib\"',
+            '--metadata=urlcolor:blue',
+            '--metadata=link-citations:true')))" | R --vanilla --quiet
+  done < <(find $PWD/.microdegree/source -name "*.rmd")
 }
 
 resetState () {
-  rm -rf target/
-  rm -rf _site
+  rm -rf _bookdown.yml _output.yml
+  rm -rf book.Rmd index.rmd book.log book.tex
+  rm -rf target/ _site project/target project/project
+  rm -rf content/target ./.microdegree/img
+  rm -rf src/main/resources/microsite/pdf/*.pdf
+  rm -rf src/main/resources/microsite/slides/*.html
+  rm -rf src/main/resources/data/menu.yml
+  rm -rf src/main/tut/index.md
+  rm -rf ../img     # TODO: fix this hack, highly unsafe! (see micrositeFiles function)
+  rm -rf \
+    ./.microdegree/site/*.md \
+    ./.microdegree/site/temp \
+    ./.microdegree/source/*.rmd \
+    ./.microdegree/source/*.log \
+    ./.microdegree/source/config.json \
+    ./.microdegree/source/img
 }
 
 micrositeFiles () {
-  cp menu.yml src/main/resources/microsite/data/menu.yml
-  echo -e "---\nlayout: home\ntitle: \"Microdegree\"\nsection: \"home\" \nposition: 1\n---\n" | cat - README.md > src/main/tut/index.md
+  cp $PWD/content/site/menu.yml $PWD/src/main/resources/microsite/data/menu.yml
+  echo -e "---\nlayout: home\ntitle: \"Home\"\nsection: \"home\" \nposition: 1\n---\n" | cat - README.md > $PWD/src/main/tut/index.md
+  cp -r $PWD/content/img $PWD/src/main/resources/microsite/img
+  cp -r $PWD/content/img $PWD/.microdegree/img
+  cp -r $PWD/content/img ../img # TODO: pls fix this (see makeBook function)
 }
 
 
@@ -96,30 +137,34 @@ do
             echo "  -h --help  : displays the help menu."
             echo "  -l --local : builds the microsite and runs the local service with jekyll."
             echo "  -s --site  : builds the microsite and publish into Github pages."
+            echo "  -r --reset : delete temporary files."
+            exit
+            ;;
+        --reset | -r)
+            echo "Deleting temporary files..."
+            resetState
             exit
             ;;
         --local | -l)
             echo "Running microsite in local mode..."
-            micrositeFiles
             resetState
+            micrositeFiles
             makeSlides
             makeDocs
-            sbt makeMicrosite
             makePdfs
-            resetState
+            makeBook
             sbt makeMicrosite
             jekyll serve -s target/site
             exit
             ;;
         --site | -s)
             echo "Publishing microsite..."
-            micrositeFiles
             resetState
+            micrositeFiles
             makeSlides
             makeDocs
-            sbt makeMicrosite
             makePdfs
-            resetState
+            makeBook
             sbt makeMicrosite
             sbt ghpagesPushSite
             exit
@@ -127,4 +172,3 @@ do
     esac
     shift
 done
-

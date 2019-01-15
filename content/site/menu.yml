@@ -1,0 +1,73 @@
+options:
+
+    #############################
+    # DOCUMENTATION (docs/*)
+    #############################
+
+  - title: Welcome!
+    url: docs.html
+    menu_type: docs
+
+  - title: What is this?
+    url: docs/01-what-is-this.html
+    menu_type: docs
+
+  - title: Monads in [My Py]thon!
+    url: docs/02-monads-in-my-python.html
+    menu_type: docs
+
+  - title: E2E ML with Apache Spark
+    url: docs/03-end-to-end-ml-with-apache-spark.html
+    menu_type: docs
+
+    #############################
+    # SLIDES (microsite/slides/*)
+    #############################
+
+  - title: Welcome!
+    url: slides.html
+    menu_type: slides
+
+  - title: Presentations Engine
+    url: microsite/slides/01-what-is-this.html
+    menu_type: slides
+
+  - title: Monads in [My Py]thon!
+    url: microsite/slides/02-monads-in-my-python.html
+    menu_type: slides
+
+  - title: E2E ML with Apache Spark
+    url: microsite/slides/03-end-to-end-ml-with-apache-spark.html
+    menu_type: slides
+
+    #############################
+    # PDFS (microsite/pdfs/*)
+    #############################
+
+  - title: Welcome!
+    url: pdfs.html
+    menu_type: pdfs
+
+  - title: What is this?
+    url: microsite/pdf/01-what-is-this.pdf
+    menu_type: pdfs
+
+  - title: Monads in [My Py]thon!
+    url: microsite/pdf/02-monads-in-my-python.pdf
+    menu_type: pdfs
+
+  - title: E2E ML with Apache Spark
+    url: microsite/pdf/03-end-to-end-ml-with-apache-spark.pdf
+    menu_type: pdfs
+
+    #############################
+    # BOOK (microsite/book/*)
+    #############################
+
+  - title: Welcome!
+    url: book.html
+    menu_type: book
+
+  - title: Free Version
+    url: microsite/book/index.html
+    menu_type: book

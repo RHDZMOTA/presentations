@@ -1,0 +1,11 @@
+# End-to-End ML with Apache Spark
+
+```{r setup-end-to-end-sparkml, include=FALSE}
+reticulate::use_virtualenv("../../venv")
+```
+
+## Acknowledgments
+
+This talk is based and inspired on the following conferences:
+
+## References

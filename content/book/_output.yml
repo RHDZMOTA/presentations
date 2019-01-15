@@ -1,0 +1,13 @@
+bookdown::gitbook:
+  config:
+    toc:
+      before: |
+        <li><a href="./">Talks and Presentations @rhdzmota</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download: ["pdf", "epub"]
+    sharing:
+      github: yes
+bookdown::pdf_book:
+  keep_tex: yes
+bookdown::epub_book: default
