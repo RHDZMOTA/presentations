@@ -2,7 +2,7 @@
 # Monads in [My Py]thon
 
 ```{r setup-python-monads, include=FALSE}
-reticulate::use_python("/mnt/d/Documents/Github/rhdzmota/presentations/venv/bin/python3.7")
+reticulate::use_virtualenv("../../venv")
 ```
 
 ## Acknowledgments
