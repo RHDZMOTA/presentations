@@ -38,7 +38,7 @@
 
 <p>Let me explain how to combine all these tools into a giant hack:</p>
 
-<p><img src="../img/documentation-process.png" alt="Documentation Process" /></p>
+<p><img src="../img/documentation-process.png" alt="Documentation Process" />  </p>
 
 <p>Find a naive implementation of this process in the <a href="https://github.com/rhdzmota/presentations">github repo</a> that contains the source code for this site.</p>
 
@@ -56,7 +56,12 @@
 
 <p>The SBT microsite plugin facilitates the deployment of the resulting site into <a href="https://pages.github.com/">github pages</a>. This service can host and serve static sites without a problem by using Jekyll.</p>
 
-<p>I use a custom script that execute the whole pipeline: * <code class="highlighter-rouge">./publish --local</code>: serve the site in localhost. * <code class="highlighter-rouge">./publush --site</code>: serve the site in github pages.</p>
+<p>I use a custom script that execute the whole pipeline:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">./publish --local</code>: serve the site in localhost.</li>
+  <li><code class="highlighter-rouge">./publush --site</code>: serve the site in github pages.</li>
+</ul>
 
 <p>Note that you must run the <code class="highlighter-rouge">setup</code> scripts before.</p>
 
@@ -64,11 +69,11 @@
 
 <p>We can represent the project of generating a presentation with a work-breakdown structure diagram (WBS).</p>
 
-<p><img src="../img/presentation-wbs.png" alt="Presentation Work Breakdown Structure" /></p>
+<p><img src="../img/presentation-wbs.png" alt="Presentation Work Breakdown Structure" />  </p>
 
 <p>To represent the dependencies, we can take the “leaves of the tree” and arrange them in a network diagram.</p>
 
-<p><img src="../img/presentation-network.png" alt="Presentation - Work Package Network Diagram" /></p>
+<p><img src="../img/presentation-network.png" alt="Presentation - Work Package Network Diagram" />  </p>
 
 <h2 id="references">References</h2>
 

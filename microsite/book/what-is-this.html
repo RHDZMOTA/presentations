@@ -183,10 +183,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="https://47deg.github.io/sbt-microsites/">Scala Microsite</a> - an SBT plugin that allows the creation of microsites.</li>
 </ul>
 <p>Let me explain how to combine all these tools into a giant hack:</p>
-<div class="figure">
-<img src="../img/documentation-process.png" alt="Documentation Process" />
-<p class="caption">Documentation Process</p>
-</div>
+<p><img src="../img/documentation-process.png" alt="Documentation Process" />  </p>
 <p>Find a naive implementation of this process in the <a href="https://github.com/rhdzmota/presentations">github repo</a> that contains the source code for this site.</p>
 </div>
 <div id="why-r-markdown" class="section level3">
@@ -200,21 +197,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="publishing" class="section level3">
 <h3><span class="header-section-number">1.2.4</span> Publishing</h3>
 <p>The SBT microsite plugin facilitates the deployment of the resulting site into <a href="https://pages.github.com/">github pages</a>. This service can host and serve static sites without a problem by using Jekyll.</p>
-<p>I use a custom script that execute the whole pipeline: * <code>./publish --local</code>: serve the site in localhost. * <code>./publush --site</code>: serve the site in github pages.</p>
+<p>I use a custom script that execute the whole pipeline:</p>
+<ul>
+<li><code>./publish --local</code>: serve the site in localhost.</li>
+<li><code>./publush --site</code>: serve the site in github pages.</li>
+</ul>
 <p>Note that you must run the <code>setup</code> scripts before.</p>
 </div>
 <div id="presentations" class="section level3">
 <h3><span class="header-section-number">1.2.5</span> Presentations</h3>
 <p>We can represent the project of generating a presentation with a work-breakdown structure diagram (WBS).</p>
-<div class="figure">
-<img src="../img/presentation-wbs.png" alt="Presentation Work Breakdown Structure" />
-<p class="caption">Presentation Work Breakdown Structure</p>
-</div>
+<p><img src="../img/presentation-wbs.png" alt="Presentation Work Breakdown Structure" />  </p>
 <p>To represent the dependencies, we can take the “leaves of the tree” and arrange them in a network diagram.</p>
-<div class="figure">
-<img src="../img/presentation-network.png" alt="Presentation - Work Package Network Diagram" />
-<p class="caption">Presentation - Work Package Network Diagram</p>
-</div>
+<p><img src="../img/presentation-network.png" alt="Presentation - Work Package Network Diagram" />  </p>
 </div>
 </div>
 <div id="references" class="section level2">
