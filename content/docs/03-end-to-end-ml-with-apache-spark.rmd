@@ -1,11 +1,103 @@
 # End-to-End ML with Apache Spark
 
 ```{r setup-end-to-end-sparkml, include=FALSE}
-reticulate::use_virtualenv("../../venv")
+reticulate::use_virtualenv(file.path(getwd(), 'venv'))
 ```
 
 ## Acknowledgments
 
 This talk is based and inspired on the following conferences:
+
+* add
+
+Find the complete list of references in the **References** section.
+
+## Prerequisites
+
+This talk assumes you are a machine learning enthusiast that is well aware the basic concepts 
+
+## Code Example!
+
+### Problem definition
+
+### Download the data
+
+We can use the Gutenberg Project as a data-source for our ML task. To download the complete content of the gutenberg project as a set of txt-files run the following bash-command:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/RHDZMOTA/spark-wordcount/develop/gutenberg.sh | sh
+```
+
+Depending on your network speed this can take up to 3 hours.
+
+Let's figure out the "footprint" of this dataset:
+
+* Number of books: `ls -l gutenberg | wc -l`
+* Data size: `du -sh gutenberg`
+
+Consider taking a random sample to facilitate local development. The following command generates a sample of 5K books:
+
+```bash
+mkdir gutenberg-sample && ls gutenberg/ | shuf -n 5000 | xargs -I _ cp gutenberg/_ gutenberg-sample/_
+```
+
+Place the resulting files into the `resources` directory of your project. 
+
+### Minimum Setup
+
+1. Install [Java 8] or greater.
+    * Debain-based OS: `sudo apt install openjdk-8-jdk`
+2. Install the [Scala Build Tool] (SBT)
+    * Debian-based OS:
+
+```bash
+$ sudo apt install wget
+$ wget https://dl.bintray.com/sbt/debian/sbt-1.2.6.deb
+$ sudo dpkg -i sbt-1.2.6.deb
+$ rm -r sbt-1.2.6.deb
+$ sbt about
+```
+
+### WordCount
+
+Let's do a quick wordcount example on the dataset as a warmup exercise:
+
+```scala
+import com.rhdzmota.presentations.Settings.S03
+import com.rhdzmota.presentations.S03.config.Context
+import org.apache.spark.sql._
+
+object WordCount extends Context {
+  import spark.implicits._
+
+  final case class WordCount(word: String, count: Long)
+
+  val data: Dataset[String] = spark.read.textFile(S03.Data.source)
+
+  val wordcount: Dataset[WordCount] = data
+    .flatMap(_.split("""\s+""")).map(_.toLowerCase.replaceAll("[^A-Za-z0-9]", "")).filter(_.length > 1)
+    .groupByKey(identity).count().map({case (w, c) => WordCount(w, c)})
+    .sort($"count".desc)
+
+  def main(args: Array[String]): Unit = {
+    println("S03 WordCount Application")
+    wordcount.show()
+    spark.close()
+  }
+}
+```
+
+Run:
+
+```scala
+WordCount.main(Array[String]())
+```
+
+Or:
+
+```bash
+sbt content/run
+```
+
 
 ## References
