@@ -22,7 +22,7 @@ makeSlides () {
 
 makeDocs () {
   echo "Generating source files..."
-  sbt content/tut
+  sbt -mem 10240 content/tut
   while read -r rdoc
   do
     doc=$(sed -e 's/^"//' -e 's/"$//' <<< "$rdoc")

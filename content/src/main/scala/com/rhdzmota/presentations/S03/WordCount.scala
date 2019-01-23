@@ -12,8 +12,11 @@ object WordCount extends Context {
   val data: Dataset[String] = spark.read.textFile(S03.Data.source)
 
   val wordcount: Dataset[WordCount] = data
-    .flatMap(_.split("""\s+""")).map(_.toLowerCase.replaceAll("[^A-Za-z0-9]", "")).filter(_.length > 1)
-    .groupByKey(identity).count().map({case (w, c) => WordCount(w, c)})
+    .flatMap(_.split("""\s+"""))
+    .map(_.toLowerCase.replaceAll("[^A-Za-z0-9]", ""))
+    .filter(_.length > 1)
+    .groupByKey(identity).count()
+    .map({case (w, c) => WordCount(w, c)})
     .sort($"count".desc)
 
   def main(args: Array[String]): Unit = {

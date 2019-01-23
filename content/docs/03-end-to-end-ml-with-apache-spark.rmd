@@ -62,7 +62,7 @@ $ sbt about
 
 Let's do a quick wordcount example on the dataset as a warmup exercise:
 
-```scala
+```tut:book
 import com.rhdzmota.presentations.Settings.S03
 import com.rhdzmota.presentations.S03.config.Context
 import org.apache.spark.sql._
@@ -89,7 +89,7 @@ object WordCount extends Context {
 
 Run:
 
-```scala
+```tut:book
 WordCount.main(Array[String]())
 ```
 
