@@ -28,13 +28,19 @@ object Application extends Context {
 
   def main(args: Array[String]): Unit = {
 
+    // Model Metadata
+    val modelID: String = java.util.UUID.randomUUID().toString
+    val modelTimestamp: String = java.time.LocalDateTime.now().toString()
+    val modelName: String = s"${modelTimestamp}-${modelID}-${(100*accuracyTrain).toInt}"
+
     // Save the model
-    val modelExmported: Boolean = model.exportPMML(
-      DataProcessing.dataset.schema, accuracyTest, None
+    val modelExported: Boolean = model.exportPMML(
+      DataProcessing.dataset.schema, modelName, None
     )
 
     // Save predictions
-    prediction.write.option("header", value = true).csv(s"out-${accuracy}")
+    val outputCols: List[String] = "target" +: DataProcessing.lagCols
+    prediction.select("predictedLabel", outputCols: _*).write.option("header", value = true).csv(s"out-${accuracy}")
 
     spark.close()
   }

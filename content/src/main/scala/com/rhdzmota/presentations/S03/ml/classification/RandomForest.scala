@@ -13,7 +13,7 @@ final case class RandomForest(basePipeline: Pipeline, processing: Pipeline) exte
   val model: RandomForestClassifier = new RandomForestClassifier()
     .setLabelCol("target_index")
     .setFeaturesCol("features")
-    .setMaxBins(50000)
+    .setMaxBins(25000)
 
   val paramGrid: Array[ParamMap] = new ParamGridBuilder()
     .baseOn(basePipeline.stages -> (processing.getStages :+ model :+ Label.converter))

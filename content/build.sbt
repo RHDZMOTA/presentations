@@ -6,7 +6,7 @@ lazy val content = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "com.rhdzmota",
-      scalaVersion := "2.12.8",
+      scalaVersion := "2.11.8",
       version      := "0.0.0-SNAPSHOT"
     )),
     name := "content",
@@ -16,7 +16,7 @@ lazy val content = (project in file(".")).
     libraryDependencies ++= {
       val configVersion = "1.3.1"
       val scalaTestVersion = "3.0.5"
-      val sparkVersion = "2.4.0"
+      val sparkVersion = "2.3.0"
       val jpmmlSparkML  = "1.4.5"
       Seq(
         // Apache Spark

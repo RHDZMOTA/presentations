@@ -22,6 +22,7 @@ object WordCount extends Context {
   def main(args: Array[String]): Unit = {
     println("S03 WordCount Application")
     wordcount.show()
+    println(s"- Number of unique words: ${wordcount.count()}")
     spark.close()
   }
 }

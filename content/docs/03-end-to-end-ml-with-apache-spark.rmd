@@ -4,6 +4,15 @@
 reticulate::use_virtualenv(file.path(getwd(), 'venv'))
 ```
 
+## Outline
+
+1. ML Project Overview
+2. Operationalizing ML
+3. Spark-Based Projects
+4. Minimal Architecture
+5. Use case walk-through
+6. Demo!
+
 ## Acknowledgments
 
 This talk is based and inspired on the following conferences:
@@ -14,7 +23,36 @@ Find the complete list of references in the **References** section.
 
 ## Prerequisites
 
-This talk assumes you are a machine learning enthusiast that is well aware the basic concepts 
+This talk assumes you are a machine learning enthusiast or a data-professional (e.g. scientist, engineer) that is well aware the basic concepts required to design and execute an ML-project.
+
+The audience must have a workable understanding of: 
+* Main programming languages used in the data-sphere (i.e. [scala], [python], [R])
+* General understanding of dataarchitecutres (e.g. batch-oriented, streaming)
+* Machine Learning theory (i.e., lots of math).
+* Machine Learning frameworks (e.g., [Spark ML], [Tensorflow], [PyTorch])
+* Data-related skills (e.g., cleaning, visualization)
+
+[scala]: https://www.scala-lang.org/
+[python]: https://www.python.org/
+[R]: https://www.r-project.org/
+[Spark ML]: http://spark.apache.org
+[Tensorflow]: https://www.tensorflow.org/
+[PyTorch]: https://pytorch.org/
+
+## ML Project Overview 
+
+
+## Operationalizing
+
+## Spark-Based Projects
+
+### Intro to Spark ML
+
+### Intro to Openscoring
+
+## Minimal Architecture
+
+## Problem definition
 
 ## Code Example!
 

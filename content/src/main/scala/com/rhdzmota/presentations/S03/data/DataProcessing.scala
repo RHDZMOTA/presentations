@@ -13,6 +13,7 @@ object DataProcessing extends Context {
   import spark.implicits._
 
   val lags: Int = S03.Spark.Processing.lags
+  val lagCols: List[String] = (1 to lags).toList.map(i => s"lag$i")
   val rawData: Dataset[String] = spark.read.textFile(S03.Data.source).repartition(
     3 * spark.sparkContext.defaultParallelism)
 

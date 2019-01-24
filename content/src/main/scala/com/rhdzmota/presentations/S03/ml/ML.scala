@@ -14,7 +14,7 @@ import java.io.BufferedWriter
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Path, Paths, StandardOpenOption}
 
-import com.rhdzmota.presentations.S03.ml.classification.{LogisticReg, RandomForest}
+import com.rhdzmota.presentations.S03.ml.classification.{DecisionTree, LogisticReg, RandomForest}
 import com.rhdzmota.presentations.Settings
 
 sealed trait ML[T] {
@@ -39,11 +39,11 @@ object ML {
         else pmmlBuilder.build()
         pmmlBuilder.build()
       }
-      def exportPMML(schema: StructType, score: Double, verificationData: Option[Dataset[Row]] = None): Boolean = {
+      def exportPMML(schema: StructType, name: String, verificationData: Option[Dataset[Row]] = None): Boolean = {
         val modelPath: Path = Paths.get("resources", "output", "model")
         if (!Files.exists(modelPath)) Files.createDirectory(modelPath)
         val pmmlFile: Path = modelPath.resolve(
-          Settings.S03.Spark.Model.file.replaceAll("score", (100 * score).toInt.toString))
+          Settings.S03.Spark.Model.file.replaceAll("name", name))
         val modelWriter: BufferedWriter = Files.newBufferedWriter(pmmlFile, StandardCharsets.UTF_8,
           StandardOpenOption.WRITE,
           StandardOpenOption.CREATE,
@@ -75,6 +75,7 @@ object ML {
       // List the candidate ML Classification models
       val randomForest: RandomForest = RandomForest(basePipeline, processing)
       val logisticReg: LogisticReg = LogisticReg(basePipeline, processing)
+      val decisionTree: DecisionTree = DecisionTree(basePipeline, processing)
 
       // Define parameter grid
       val paramGrid: Array[ParamMap] = logisticReg.paramGrid //randomForest.paramGrid
