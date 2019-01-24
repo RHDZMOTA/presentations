@@ -11,4 +11,6 @@ trait Context {
     .config(Label.driverMem, Value.driverMem)
     .config(Label.executorMem, Value.executorMem)
     .getOrCreate()
+
+  //spark.sparkContext.setLogLevel("WARN")
 }
