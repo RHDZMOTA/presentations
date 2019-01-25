@@ -10,6 +10,7 @@ trait Context {
     .config(Label.master, Value.master)
     .config(Label.driverMem, Value.driverMem)
     .config(Label.executorMem, Value.executorMem)
+    .config("spark.driver.maxResultSize", "3g")
     .getOrCreate()
 
   //spark.sparkContext.setLogLevel("WARN")
