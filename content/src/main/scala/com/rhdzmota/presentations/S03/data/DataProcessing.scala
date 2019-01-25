@@ -3,7 +3,7 @@ package com.rhdzmota.presentations.S03.data
 import com.rhdzmota.presentations.S03.config.Context
 import com.rhdzmota.presentations.Settings
 import org.apache.spark.ml.{Pipeline, PipelineStage}
-import org.apache.spark.ml.feature.{IndexToString, StringIndexer, StringIndexerModel, VectorAssembler}
+import org.apache.spark.ml.feature._
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.{Dataset, Row}
 import org.apache.spark.sql.functions.rand
@@ -42,6 +42,10 @@ object DataProcessing extends Context {
       .setOutputCol(s"${col}_index")
       .fit(dataset)
 
+    val encoder = new OneHotEncoderEstimator()
+      .setInputCols((1 to lags).toArray.map(i => s"lag${i}_index"))
+      .setOutputCols((1 to lags).toArray.map(i => s"lag${i}_vec_index"))
+
     val vectorAssembler: VectorAssembler = new VectorAssembler()
       .setInputCols((1 to lags).toArray.map(i => s"lag${i}_index"))
       .setOutputCol("features")
@@ -60,6 +64,7 @@ object DataProcessing extends Context {
 
   lazy val stages: Array[PipelineStage] =
     (1 to lags).toArray.map(i => Features.wordIndexer(s"lag${i}")) :+
+      Features.encoder :+
       Label.indexer :+
       Features.vectorAssembler
     //(1 to nlags).toArray.map(i => reconfigurableWordIndexer(s"lag${i}")) :+

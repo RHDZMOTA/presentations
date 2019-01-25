@@ -33,14 +33,16 @@ object Application extends Context {
     val modelTimestamp: String = java.time.LocalDateTime.now().toString()
     val modelName: String = s"${modelTimestamp}-${modelID}-${(100*accuracyTrain).toInt}"
 
+    // Save predictions
+    val outputCols: List[String] = "target" +: DataProcessing.lagCols
+    prediction.select("predictedLabel", outputCols: _*)
+      .write.option("header", value = true)
+      .csv(s"resources/output/pred/${modelTimestamp}-${modelID}")
+
     // Save the model
     val modelExported: Boolean = model.exportPMML(
       DataProcessing.dataset.schema, modelName, None
     )
-
-    // Save predictions
-    val outputCols: List[String] = "target" +: DataProcessing.lagCols
-    prediction.select("predictedLabel", outputCols: _*).write.option("header", value = true).csv(s"out-${accuracy}")
 
     spark.close()
   }
