@@ -30,14 +30,14 @@ object Application extends Context {
 
     // Model Metadata
     val modelID: String = java.util.UUID.randomUUID().toString
-    val modelTimestamp: String = java.time.LocalDateTime.now().toString()
-    val modelName: String = s"${modelTimestamp}-${modelID}-${(100*accuracyTrain).toInt}"
+    val modelTimestamp: String = java.time.LocalDateTime.now().toString
+    val modelName: String = s"$modelTimestamp-$modelID-${(100*accuracyTrain).toInt}"
 
     // Save predictions
     val outputCols: List[String] = "target" +: DataProcessing.lagCols
     prediction.select("predictedLabel", outputCols: _*)
       .write.option("header", value = true)
-      .csv(s"resources/output/pred/${modelTimestamp}-${modelID}")
+      .csv(s"resources/output/pred/$modelTimestamp-$modelID")
 
     // Save the model
     val modelExported: Boolean = model.exportPMML(
