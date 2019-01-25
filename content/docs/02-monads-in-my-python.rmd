@@ -315,7 +315,7 @@ Let's create an `Option` monad.
 
 For simplicity, let's use a higher-order function that allows us to compose two functions:
 
-```{python}
+```python
 from typing import Callable, TypeVar
 
 A = TypeVar('A')
@@ -323,14 +323,14 @@ B = TypeVar('B')
 C = TypeVar('C')
 ```
 
-```{python}
+```python
 def compose(this: Callable[[A], B], and_then: Callable[[B], C]) -> Callable[[A], C]:
     return lambda x: and_then(this(x))
 ```
 
 Now let's define our option:
 
-```{python}
+```python
 from abc import ABC, abstractmethod
 from typing import Union, Generic, TypeVar, Callable
 
@@ -339,7 +339,7 @@ B = TypeVar("B")
 T = TypeVar("T")
 ```
 
-```{python}
+```python
 class Option(Generic[A], ABC):
 
     @abstractmethod
@@ -373,7 +373,7 @@ class Option(Generic[A], ABC):
 
 An `Option[A]` can take `Some[A]` value or be `Empty`. We can define the `Some` type:
 
-```{python}
+```python
 class Some(Option[A]):
     def __init__(self, value: A) -> None:
         self._value = value
@@ -398,7 +398,7 @@ class Some(Option[A]):
 
 The `Empty` class is defined as:
 
-```{python}
+```python
 class Empty(Option[A]):
     def __init__(self) -> None:
         pass
@@ -423,7 +423,7 @@ class Empty(Option[A]):
 
 Now we can use our option type!
 
-```{python}
+```python
 # Two options
 opt_a: Option[int] = Some(2)
 opt_b: Option[int] = Some(5)
@@ -441,7 +441,7 @@ print(f"opt_c = {opt_c}\nopt_e = {opt_e}")
 
 Let's define some decorators:
 
-```{python}
+```python
 from typing import Callable, TypeVar
 
 T = TypeVar("T")
@@ -450,7 +450,7 @@ A = TypeVar("A")
 
 Decorate a function to output `Option` type:
 
-```{python}
+```python
 def to_option(fn: Callable[..., T]) -> Callable[..., Option[T]]:
     def inner(*args, **kwargs) -> Option[T]:
         try:
@@ -465,7 +465,7 @@ def to_option(fn: Callable[..., T]) -> Callable[..., Option[T]]:
 
 Decorate a function facilitate `Option` composability;
 
-```{python}
+```python
 def composable(fn: Callable[..., Option[T]]) -> Callable[..., Option[T]]:
     def inner(*args, **kwargs) -> Option[T]:
         new_args = []
@@ -483,14 +483,14 @@ def composable(fn: Callable[..., Option[T]]) -> Callable[..., Option[T]]:
 
 Now we are ready to define our functions:
 
-```{python}
+```python
 @composable
 @to_option
 def div(num: int, den: int) -> int:
     return num / den
 ```
 
-```{python}
+```python
 @composable
 @to_option
 def factorial(n: int) -> int:
@@ -501,14 +501,14 @@ def factorial(n: int) -> int:
 
 Our monadic values allows us to easily compose between `Objects` (see [this](https://youtu.be/WNwV3wR4JjA?t=1034)).
 
-```{python}
+```python
 a = 5
 b = 0
 res = div(a, b)
 print(f"div(a,b) = {res}")
 ```
 
-```{python}
+```python
 a = 15
 b = 0
 c = 3
@@ -518,7 +518,7 @@ res_2 = div(d, div(a, c))
 print(f"div(d, div(a, b) = {res_1}\ndiv(d, div(a, c)) = {res_2}")
 ```
 
-```{python}
+```python
 a = 10
 b = -2
 res_1 = div(a, b)

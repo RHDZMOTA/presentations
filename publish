@@ -111,6 +111,7 @@ resetState () {
   rm -rf src/main/resources/data/menu.yml
   rm -rf src/main/tut/index.md
   rm -rf src/main/resources/microsite/book
+  rm -rf src/main/resources/microsite/img
   rm -rf ../img     # TODO: fix this hack, highly unsafe! (see micrositeFiles function)
   rm -rf \
     ./.microdegree/site/*.md \
