@@ -1,10 +1,542 @@
 <html><head><title>Presentations: End-To-End Machine Learning with Apache Spark</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="rhdzmota" /><meta name="description" content="Talks and Presentations" /><meta name="og:image" content="/presentations/img/poster.png" /><meta name="og:title" content="Presentations: End-To-End Machine Learning with Apache Spark" /><meta name="og:site_name" content="Presentations" /><meta name="og:url" content="https://rhdzmota.github.io/presentations" /><meta name="og:type" content="website" /><meta name="og:description" content="Talks and Presentations" /><link rel="icon" type="image/png" href="/presentations/img/favicon.png" /><meta name="twitter:title" content="Presentations: End-To-End Machine Learning with Apache Spark" /><meta name="twitter:image" content="https://rhdzmota.github.io/presentationsimg/poster.png" /><meta name="twitter:description" content="Talks and Presentations" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:creator" content="@rhdzmota" /><link rel="icon" type="image/png" sizes="16x16" href="/presentations/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/presentations/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/presentations/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/presentations/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/presentations/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/presentations/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/presentations/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/presentations/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/presentations/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/presentations/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/presentations/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/presentations/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/presentations/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/presentations/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/presentations/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/presentations/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/presentations/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/presentations/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/presentations/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/presentations/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/presentations/highlight/styles/atom-one-light.css" /><link rel="stylesheet" href="/presentations/css/style.css" /><link rel="stylesheet" href="/presentations/css/palette.css" /><link rel="stylesheet" href="/presentations/css/codemirror.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/presentations/" class="brand"><div class="brand-wrapper"><span>Presentations</span></div></a></li> <li><a href="/presentations/docs.html" class="">Welcome!</a></li> <li><a href="/presentations/docs/01-what-is-this.html" class="">What is this?</a></li> <li><a href="/presentations/docs/02-monads-in-my-python.html" class="">Monads in [My Py]thon!</a></li> <li><a href="/presentations/docs/03-end-to-end-ml-with-apache-spark.html" class="">E2E ML with Apache Spark</a></li>          </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li id="gh-eyes-item" class="hidden-xs"><a href="https://github.com/rhdzmota/presentations"><i class="fa fa-eye"></i><span>WATCH<span id="eyes" class="label label-default">--</span></span></a></li><li id="gh-stars-item" class="hidden-xs"><a href="https://github.com/rhdzmota/presentations"><i class="fa fa-star-o"></i><span>STARS<span id="stars" class="label label-default">--</span></span></a></li><li><a href="#" onclick="shareSiteTwitter('Presentations Talks and Presentations');"><i class="fa fa-twitter"></i></a></li><li><a href="#" onclick="shareSiteFacebook('Presentations Talks and Presentations');"><i class="fa fa-facebook"></i></a></li><li><a href="#" onclick="shareSiteGoogle();"><i class="fa fa-google-plus"></i></a></li></ul></div></div></div></div><div id="content" data-github-owner="rhdzmota" data-github-repo="presentations"><div class="content-wrapper"><section><h1 id="end-to-end-ml-with-apache-spark">End-to-End ML with Apache Spark</h1>
 
+<h2 id="outline">Outline</h2>
+
+<ol>
+  <li>ML Project Overview</li>
+  <li>Operationalizing</li>
+  <li>Spark-Based Projects</li>
+  <li>Code Example!</li>
+</ol>
+
+<h2 id="starting-questions">Starting Questions</h2>
+
+<ul>
+  <li>Who in here is a Data Professional (e.g., scientist, engineer)?</li>
+  <li>How many of you have used Apache Spark? in production?</li>
+  <li>How many of you are currently developing/maintaining a ML service?</li>
+</ul>
+
 <h2 id="acknowledgments">Acknowledgments</h2>
 
 <p>This talk is based and inspired on the following conferences:</p>
 
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=SNxMLINtlbo">Operationalizing Machine Learning - Serving ML Models</a> by Boris Lublinsky</li>
+  <li><a href="https://www.youtube.com/watch?v=woRmeGvOaz4">Concept Drift: Monitoring Model Quality in Streaming Machine Learning Applications</a> by Emre Velipasaoglu</li>
+  <li><a href="https://www.youtube.com/watch?v=CdVXEQgmnfY">R, Scikit-Learn, and Apache Spark ML: What Difference Does It Make?</a> by Villu Ruusmann</li>
+</ul>
+
+<p>Find the complete list of references in the <strong>References</strong> section.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>This talk assumes you are a machine learning enthusiast or a data-professional (e.g. scientist, engineer) that is well aware the basic concepts required to design and execute an ML-project.</p>
+
+<p>The audience must have a workable understanding of:</p>
+
+<ul>
+  <li>Main programming languages used in the data-sphere (i.e. <a href="https://www.scala-lang.org/">scala</a>, <a href="https://www.python.org/">python</a>, <a href="https://www.r-project.org/">R</a>)</li>
+  <li>General understanding of data architecutres (e.g. batch-oriented, streaming)</li>
+  <li>Machine Learning theory (i.e., lots of math).</li>
+  <li>Machine Learning frameworks (e.g., <a href="http://spark.apache.org/mllib/">Spark ML</a>, <a href="https://www.tensorflow.org/">Tensorflow</a>, <a href="https://pytorch.org/">PyTorch</a>)</li>
+  <li>Data-related skills (e.g., cleaning, visualization)</li>
+</ul>
+
+<h2 id="ml-project-overview">ML Project Overview</h2>
+
+<p>Typically with a ML Project, different groups are responsible for model training and serving. Moreover, the data science toolbox is constantly evolving, pushing software engineers to create more model-serving frameworks and introducing complexity to the development pipeline.</p>
+
+<p>Consider the following machine-learning pipeline:</p>
+
+<p><img src="../img/ml-cycle.png" alt="Machine Learning Cycle" />
+Machine Learning Cycle.</p>
+
+<h3 id="whats-a-ml-model">What’s a ML Model?</h3>
+
+<p>We will use the idea of a model as just a function <code class="highlighter-rouge">f</code> that transforms a set of inputs <code class="highlighter-rouge">x</code> into outputs <code class="highlighter-rouge">y</code> (i.e. <code class="highlighter-rouge">y = f(x)</code>).</p>
+
+<p>This definition allows us to apply functional composition in the implementation of our ML service.</p>
+
+<p>With this is mind, we can introduce the concept [machine learning pipelines ] as a graph defining a chain of operations (e.g., data transformations):</p>
+
+<p><img src="../img/pipeline.png" alt="Machine Learning Pipeline" />
+Why is it important to define a pipeline? To encapsulate all the logic needed to serve the machine learning model. This formalizes the pipeline form the input data to the output.</p>
+
+<h2 id="operationalizing">Operationalizing</h2>
+
+<h3 id="traditional-approach">Traditional Approach</h3>
+
+<p>Traditionally, the machine learning model was viewed as code. This code had to be somehow imported for serving in production.</p>
+
+<p><img src="../img/impedance-mismatch.png" alt="Impedance Mismatch" />
+Impedance mismatch!</p>
+
+<h3 id="a-simple-solution">A simple solution</h3>
+
+<p>We can shift our thinking from a “code” perspective to a “data” perspective and represent the model using a standard specification that’s agnostic to the training process. We can use the PMML specification designed by the <a href="http://dmg.org/">Data Mining Group</a> to achieve this.</p>
+
+<p>Predictive Markdown Model Language is:</p>
+
+<blockquote>
+  <p>“an XML-based language that provides a way for applications to define statistical and data-mining models as well as to share models between PMML-compliant applications.”</p>
+</blockquote>
+
+<p>(Ruusmann 2017)</p>
+
+<p>Integration with the most popular ML frameworks via JPMML:</p>
+
+<ul>
+  <li><a href="https://github.com/jpmml/jpmml-sparkml">jpmml-sparkml</a></li>
+  <li><a href="https://github.com/jpmml/jpmml-sklearn">jpmml-sklearn</a></li>
+  <li><a href="https://github.com/jpmml/jpmml-r">jpmml-r</a></li>
+  <li><a href="https://github.com/jpmml/jpmml-xgboost">jpmml-xgboost</a></li>
+  <li><a href="https://github.com/jpmml/jpmml-tensorflow">jpmml-tensorflow</a></li>
+</ul>
+
+<p>Using these tools we can achieve:</p>
+
+<p><img src="../img/simple-ml-scoring.png" alt="Simple Scoring" />
+Simple Scoring.</p>
+
+<h3 id="best-practice">Best Practice</h3>
+
+<p>We can use either a stream-processing engine (SPE e.g., Apache Spark, Flink) or a stream-processing library (SPL e.g., Akka Stream, Kafka Stream).</p>
+
+<p><img src="../img/suggested-architecture.png" alt="Suggested Architecture" />
+Suggested architecture.</p>
+
+<ul>
+  <li>SPE: Good fit for applications that require features provided out of the box by such engines.</li>
+  <li>SPL: Provide a programming model highly customizable and light-weight.</li>
+</ul>
+
+<p>(Lublinsky 2017)</p>
+
+<p>We can use <a href="https://doc.akka.io/docs/akka/2.5/stream/">Akka Streams</a> - based on <a href="https://doc.akka.io/docs/akka/2.5/guide/tutorial_1.html">Akka Actors</a>, to implement the proposed architecture (see <a href="https://github.com/RHDZMOTA/cnap-policy-crawler">syntax example</a>). The result would look like this:</p>
+
+<p><img src="../img/simple-akka-stream-ml.png" alt="Naive Akka Implementation" /></p>
+
+<p>Simple Akka Implementation</p>
+
+<p>Furthermore, we can enhance this approach by using Akka Clusters.</p>
+
+<p><img src="../img/akka-cluster-ml.png" alt="Akka Cluster Implementation" /></p>
+
+<p>Akka Cluster Implementation</p>
+
+<h3 id="the-big-picture">The Big Picture</h3>
+
+<p>Dean Wampler does a fantastic job describing the overall picture of a data-driven system architecture.</p>
+
+<p><img src="../img/complete-architecture.png" alt="Data Architecture" />
+Big Picture Architecture</p>
+
+<p>(Wampler 2017)</p>
+
+<h2 id="spark-based-projects">Spark-Based Projects</h2>
+
+<h3 id="why-apache-spark">Why Apache Spark?</h3>
+
+<p>According to their website,</p>
+
+<blockquote>
+  <p>“<a href="https://spark.apache.org/">Apache Spark</a> is a unified analytics engine for large-scale data processing.”</p>
+</blockquote>
+
+<p>Accoding to the book “High Performance Spark - Best Practices for Scaling &amp; Optimizing Apache Spark”:</p>
+
+<blockquote>
+  <p>“Apache Spark is a high-performance, general puropose distributed computer system. Spark enables us to process large quantities of data, beyond what can fit on a sinlge machine, with a high-level, relatively easy-to-use API. Uniquely, Spark allows us to write the logic of data transformations and machine learning algorithms in a way that is parallelizable, but relatively system agnostic.”</p>
+</blockquote>
+
+<p>(Karau and Warren 2017)</p>
+
+<p>Most of the Apache Spark features revolve around a base data-structure called <a href="https://spark.apache.org/docs/latest/rdd-programming-guide.html#resilient-distributed-datasets-rdds">RDD</a>s (resilient distributed datasets). An RDD is a fault-tolerant collection of elements that can be operated on parallel.</p>
+
+<p>Let’s initialize an Spark Session (sbt console: <code class="highlighter-rouge">sbt -Dscala.color "content/console"</code>):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> 
+  <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">"Example!"</span><span class="o">).</span><span class="n">config</span><span class="o">(</span><span class="s">"spark.master"</span><span class="o">,</span> <span class="s">"local[*]"</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
+
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
+</code></pre></div></div>
+
+<p>By default, the number of partitions is the number of all available cores (Laskowski 2017):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">defaultParallelism</span>
+<span class="c1">// res0: Int = 12
+</span></code></pre></div></div>
+
+<p>We can test this by creating a simple Dataset from a list:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">trait</span> <span class="nc">Person</span>
+
+<span class="k">object</span> <span class="nc">Person</span> <span class="o">{</span>
+  <span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Dead</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">birthYear</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">deadYear</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Person</span> <span class="o">{</span>
+      <span class="k">def</span> <span class="n">kill</span><span class="k">:</span> <span class="kt">Dead</span> <span class="o">=</span> <span class="k">this</span>
+    <span class="o">}</span>
+
+  <span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Alive</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">birthYear</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">kill</span><span class="k">:</span> <span class="kt">Dead</span> <span class="o">=</span> <span class="nc">Dead</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">birthYear</span><span class="o">,</span> <span class="mi">2019</span><span class="o">)</span>
+  <span class="o">}</span>
+  
+  <span class="k">val</span> <span class="n">names</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span>
+    <span class="s">"Data Ninja"</span><span class="o">,</span>
+    <span class="s">"Random Developer"</span><span class="o">,</span>
+    <span class="s">"Pizza Lover"</span><span class="o">,</span>
+    <span class="s">"Beer Lover"</span>
+  <span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">years</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1980</span> <span class="n">to</span> <span class="mi">2000</span><span class="o">).</span><span class="n">toList</span>
+
+  <span class="k">def</span> <span class="n">getRandomElement</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">ls</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> 
+    <span class="n">ls</span><span class="o">(</span><span class="n">scala</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="nc">Random</span><span class="o">.</span><span class="n">nextInt</span><span class="o">(</span><span class="n">ls</span><span class="o">.</span><span class="n">size</span><span class="o">))</span>
+
+  <span class="k">def</span> <span class="n">getRandom</span><span class="k">:</span> <span class="kt">Alive</span> <span class="o">=</span> <span class="nc">Alive</span><span class="o">(</span><span class="n">getRandomElement</span><span class="o">(</span><span class="n">names</span><span class="o">),</span> <span class="n">getRandomElement</span><span class="o">(</span><span class="n">years</span><span class="o">))</span>
+<span class="o">}</span>
+
+<span class="k">val</span> <span class="n">people</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Person.Alive</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">1000</span><span class="o">).</span><span class="n">toList</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">i</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">.</span><span class="n">getRandom</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>We can now create a <code class="highlighter-rouge">Dataset[Person]</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">org.apache.spark.sql.Dataset</span>
+
+<span class="k">val</span> <span class="n">alivePeople</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Person.Alive</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataset</span><span class="o">(</span><span class="n">people</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>The number of partitions on this dataset:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alivePeople</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">partitions</span><span class="o">.</span><span class="n">size</span>
+<span class="c1">// res1: Int = 12
+</span></code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">deadPeople</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Person.Dead</span><span class="o">]</span> <span class="k">=</span> 
+  <span class="n">alivePeople</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">birthYear</span> <span class="o">&gt;</span> <span class="mi">1994</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="n">person</span><span class="o">.</span><span class="n">kill</span><span class="o">)</span>
+<span class="c1">// deadPeople: org.apache.spark.sql.Dataset[Person.Dead] = [name: string, birthYear: int ... 1 more field]
+</span>
+<span class="n">deadPeople</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="c1">// +----------------+---------+--------+
+// |            name|birthYear|deadYear|
+// +----------------+---------+--------+
+// |      Data Ninja|     1999|    2019|
+// |     Pizza Lover|     1995|    2019|
+// |Random Developer|     1998|    2019|
+// |Random Developer|     1998|    2019|
+// |      Data Ninja|     1996|    2019|
+// |     Pizza Lover|     1996|    2019|
+// |      Beer Lover|     1997|    2019|
+// |      Beer Lover|     1995|    2019|
+// |     Pizza Lover|     1998|    2019|
+// |     Pizza Lover|     1995|    2019|
+// |      Data Ninja|     1997|    2019|
+// |      Beer Lover|     1999|    2019|
+// |Random Developer|     1995|    2019|
+// |      Beer Lover|     1995|    2019|
+// |      Beer Lover|     1998|    2019|
+// |      Data Ninja|     1996|    2019|
+// |      Data Ninja|     1999|    2019|
+// |      Beer Lover|     1995|    2019|
+// |     Pizza Lover|     1996|    2019|
+// |      Data Ninja|     1997|    2019|
+// +----------------+---------+--------+
+// only showing top 20 rows
+// 
+</span></code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">spark</span><span class="o">.</span><span class="n">close</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>For performance reasons, this presentation will use the official Scala API.</p>
+
+<h3 id="intro-to-spark-ml">Intro to Spark ML</h3>
+
+<p>Spark ML is a practical and scalable machine learning library based on a [Dataset]. A Dataset is a distributed collection of data with interesting features such as strong typing, lambda functions, and with the advantages of the Spark SQL’s optimized execution engine. We can manipulate a dataset with functional transformantions. The most basic ones:</p>
+
+<ul>
+  <li>map - <code class="highlighter-rouge">Dataset[A].map(fn: A =&gt; B): Dataset[B]</code></li>
+  <li>flatMap - <code class="highlighter-rouge">Dataset[A].flatMap(fn: A =&gt; Dataset[B]): Dataset[B]</code></li>
+  <li>filter - <code class="highlighter-rouge">Dataset[A].filter(fn: A =&gt; Boolean): Dataset[A]</code></li>
+</ul>
+
+<p>One of the most usefull abstractions available on the Spark ML package are pipelines. Main concepts:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Dataset[Row]</code>: A set of data, also called dataframe. Each row usually represents an observation.</li>
+  <li><code class="highlighter-rouge">Transformer</code>: an algorithm that takes one <code class="highlighter-rouge">DataFrame</code> and returns another <code class="highlighter-rouge">DataFrame</code>.</li>
+  <li><code class="highlighter-rouge">Estimator</code>: an algorithm that takes a <code class="highlighter-rouge">DataFrame</code> and returns a <code class="highlighter-rouge">Transformer</code>.</li>
+  <li><code class="highlighter-rouge">Pipeline</code>: a chain of multiple <code class="highlighter-rouge">Transformer</code> or <code class="highlighter-rouge">Estimator</code>.</li>
+</ul>
+
+<p>add image of transformation</p>
+
+<h3 id="intro-to-jpmml-and-openscoring">Intro to JPMML and Openscoring</h3>
+
+<p>Data Scientist might use Python and R for exploration and modeling while software engineers use Scala, Java, or Go for the system architecture. Complexity arises when dealing with multiple runtimes and trying to integrate the data solutions into the system. One way to standardize this interaction is via PMML: Predictive Markdown Model Language.</p>
+
+<p>To use the jpmml-sparkml library, just add the following dependency to your sbt file:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"org.jpmml"</span> <span class="o">%</span> <span class="s">"jpmml-sparkml"</span> <span class="o">%</span> <span class="s">"1.4.5"</span>
+</code></pre></div></div>
+
+<p>Now we can just take a Spark <code class="highlighter-rouge">PipelineModel</code> and create a PMML object:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">pmmlBuilder</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PMMLBuilder</span><span class="o">(</span><span class="n">schema</span><span class="o">,</span> <span class="n">pipelineModel</span><span class="o">)</span>
+<span class="n">pmmlBuilder</span><span class="o">.</span><span class="n">build</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>See the official <a href="https://github.com/jpmml/jpmml-sparkml">jpmml-sparkml github repo</a> for a complete list of supported <code class="highlighter-rouge">PipelineStages</code> types.</p>
+
+<p>We can use <a href="https://github.com/openscoring/openscoring">Openscoring</a>, a java-based REST web-service, as our scoring-engine of the resulting PMML model.</p>
+
+<ul>
+  <li>Simple but powerful API</li>
+  <li>Allows for single predictions and for batch predictions.</li>
+  <li>Acceptable performance (usually sub-milliseconds respond time)</li>
+</ul>
+
+<p>Model REST API endpoints:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HTTP method</th>
+      <th>Endpoint</th>
+      <th>Required role(s)</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GET</td>
+      <td>/model</td>
+      <td>-</td>
+      <td>Get the summaries of all models</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>/model/${id}</td>
+      <td>admin</td>
+      <td>Deploy a model</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/model/${id}</td>
+      <td>-</td>
+      <td>Get the summary of a model</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/model/${id}/pmml</td>
+      <td>admin</td>
+      <td>Download a model as a PMML document</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/model/${id}</td>
+      <td>-</td>
+      <td>Evaluate data in “single prediction” mode</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/model/${id}/batch</td>
+      <td>-</td>
+      <td>Evaluate data in “batch prediction” mode</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/model/${id}/csv</td>
+      <td>-</td>
+      <td>Evaluate data in “CSV prediction” mode</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>/model/${id}</td>
+      <td>admin</td>
+      <td>Undeploy a model</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="../img/ml-complexity-vs-size.png" alt="ML Complexity VS Dataset Size" />
+Complexity vs dataset size.</p>
+
+<p>(Ruusmann 2017)</p>
+
+<h2 id="code-example">Code Example!</h2>
+
+<h3 id="problem-definition">Problem definition</h3>
+
+<h3 id="download-the-data">Download the data</h3>
+
+<p>We can use the Gutenberg Project as a data-source for our ML task. To download the complete content of the gutenberg project as a set of txt-files run the following bash-command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://raw.githubusercontent.com/RHDZMOTA/spark-wordcount/develop/gutenberg.sh | sh
+</code></pre></div></div>
+
+<p>Depending on your network speed this can take up to 3 hours.</p>
+
+<p>Let’s figure out the “footprint” of this dataset:</p>
+
+<ul>
+  <li>Number of books: <code class="highlighter-rouge">ls -l gutenberg | wc -l</code></li>
+  <li>Data size: <code class="highlighter-rouge">du -sh gutenberg</code></li>
+</ul>
+
+<p>Consider taking a random sample to facilitate local development. The following command generates a sample of 5K books:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>gutenberg-sample <span class="o">&amp;&amp;</span> <span class="nb">ls </span>gutenberg/ | <span class="nb">shuf</span> <span class="nt">-n</span> 5000 | xargs <span class="nt">-I</span> _ <span class="nb">cp </span>gutenberg/_ gutenberg-sample/_
+</code></pre></div></div>
+
+<p>Printing the results…</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"There are </span><span class="k">$(</span><span class="nb">ls</span> <span class="nt">-l</span> gutenberg | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span><span class="s2"> books that represent: </span><span class="k">$(</span><span class="nb">du</span> <span class="nt">-sh</span> gutenberg<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h3 id="minimum-setup">Minimum Setup</h3>
+
+<ol>
+  <li>Install [Java 8] or greater.
+    <ul>
+      <li>Debain-based OS: <code class="highlighter-rouge">sudo apt install openjdk-8-jdk</code></li>
+    </ul>
+  </li>
+  <li>Install the [Scala Build Tool] (SBT)
+    <ul>
+      <li>Debian-based OS:</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>wget
+<span class="nv">$ </span>wget https://dl.bintray.com/sbt/debian/sbt-1.2.6.deb
+<span class="nv">$ </span><span class="nb">sudo </span>dpkg <span class="nt">-i</span> sbt-1.2.6.deb
+<span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-r</span> sbt-1.2.6.deb
+<span class="nv">$ </span>sbt about
+</code></pre></div></div>
+
+<h3 id="wordcount">WordCount</h3>
+
+<p>Let’s do a quick wordcount example on the dataset as a warmup exercise:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.rhdzmota.presentations.Settings.S03</span>
+<span class="k">import</span> <span class="nn">com.rhdzmota.presentations.S03.config.Context</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql._</span>
+
+<span class="k">object</span> <span class="nc">WordCount</span> <span class="k">extends</span> <span class="nc">Context</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+  <span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">WordCount</span><span class="o">(</span><span class="n">word</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">count</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">data</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="n">S03</span><span class="o">.</span><span class="nc">Data</span><span class="o">.</span><span class="n">source</span><span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">wordcount</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">WordCount</span><span class="o">]</span> <span class="k">=</span> <span class="n">data</span>
+    <span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">"""\s+"""</span><span class="o">)).</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">toLowerCase</span><span class="o">.</span><span class="n">replaceAll</span><span class="o">(</span><span class="s">"[^A-Za-z0-9]"</span><span class="o">,</span> <span class="s">""</span><span class="o">)).</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">identity</span><span class="o">).</span><span class="n">count</span><span class="o">().</span><span class="n">map</span><span class="o">({</span><span class="k">case</span> <span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">WordCount</span><span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="n">c</span><span class="o">)})</span>
+    <span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="n">$</span><span class="s">"count"</span><span class="o">.</span><span class="n">desc</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">"S03 WordCount Application"</span><span class="o">)</span>
+    <span class="n">wordcount</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">close</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Run:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WordCount</span><span class="o">.</span><span class="n">main</span><span class="o">(</span><span class="nc">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">]())</span>
+</code></pre></div></div>
+
+<p>Or:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sbt <span class="s2">"content/runMain com.rhdzmota.presentations.S03.WordCount"</span> 
+</code></pre></div></div>
+
+<h3 id="next-word-prediction">Next Word Prediction</h3>
+
+<p>The challenge we have consists con taking an n-set of books and create a model that’s capable of predicting the next word given a context of the last m-words.</p>
+
+<h3 id="openscoring-container">Openscoring Container</h3>
+
+<p>We can easily leverage Openscoring with Docker.</p>
+
+<p>Consider the following <code class="highlighter-rouge">Dockerfile</code>:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> maven:3.5-jdk-8-alpine</span>
+
+<span class="k">RUN </span>apk update <span class="o">&amp;&amp;</span> apk upgrade <span class="o">&amp;&amp;</span> apk add <span class="nt">--no-cache</span> bash ca-certificates wget openssh
+
+<span class="k">RUN </span>wget https://github.com/openscoring/openscoring/releases/download/1.4.3/openscoring-server-executable-1.4.3.jar
+
+<span class="k">ADD</span><span class="s"> application.conf application.conf</span>
+
+<span class="k">ENTRYPOINT</span><span class="s"> java -Dconfig.file=application.conf -jar openscoring-server-executable-1.4.3.jar</span>
+
+<span class="k">EXPOSE</span><span class="s"> 8080</span>
+
+<span class="k">CMD</span><span class="s"> []</span>
+</code></pre></div></div>
+
+<p>And the following <code class="highlighter-rouge">application.conf</code> file:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>application {
+  // List of JAX-RS Component class names that must be registered
+  componentClasses = [
+    "org.openscoring.service.filters.NetworkSecurityContextFilter",
+    "org.openscoring.service.filters.ServiceIdentificationFilter"
+  ]
+}
+
+networkSecurityContextFilter {
+  // List of trusted IP addresses. An empty list defaults to all local network IP addresses.
+  // A client that originates from a trusted IP address (as indicated by the value of the CGI variable REMOTE_ADDR) is granted the "admin" role.
+  trustedAddresses = ["*"]
+}
+</code></pre></div></div>
+
+<p>We can create our custom image with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> next-word-demo/openscoring resources/provided/docker/
+</code></pre></div></div>
+
+<p>Now we can run a docker container with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 8080:8080 <span class="nt">-d</span> <span class="nt">--name</span> next-word-engine next-word-demo/openscoring
+</code></pre></div></div>
+
+<p>You can test this service is running by going to: <code class="highlighter-rouge">http://{ip-address}:8080/openscoring</code> where <code class="highlighter-rouge">ip-address</code> is your <code class="highlighter-rouge">docker-machine ip</code> or <code class="highlighter-rouge">localhost</code>. We can now upload the resulting dataset to the Openscoring API:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> PUT <span class="nt">--data-binary</span> @resources/output/model/2019-01-25T01-07-14.836-89d19488-3d3d-483c-a2f0-47caf685d7db-96.pmml <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-type: text/xml"</span> <span class="se">\</span>
+http://192.168.99.100:8080/openscoring/model/next-word
+</code></pre></div></div>
+
+<p>We should see the model in <code class="highlighter-rouge">http://{ip-address}:8080/openscoring/model/next-word-demo</code>.</p>
+
+<p>Enjoy your scoring!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST <span class="nt">--data-binary</span> @resources/provided/requests/req-01.json <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-type: application/json"</span> <span class="se">\</span>
+    http://192.168.99.100:8080/openscoring/model/next-word <span class="se">\</span>
+    | jq <span class="s1">'.result."pmml(prediction)"'</span>
+</code></pre></div></div>
+
 <h2 id="references">References</h2>
+
+<p>Karau, Holden, and Rachel Warren. 2017. <em>High Performance Spark: Best Practices for Scaling and Optimizing Apache Spark</em>. “ O’Reilly Media, Inc.”</p>
+
+<p>Laskowski, Jacek. 2017. “Mastering Apache Spark.” <em>Gitbook: Https://Jaceklaskowski.gitbooks.io/Mastering-Apache-Spark</em> 25.</p>
+
+<p>Lublinsky, Boris. 2017. <em>Serving Machine Learning Models - a Guide to Architecture, Stream, Processing Engines, and Frameworks</em>. “O’Reilly Media, Inc.”</p>
+
+<p>Ruusmann, Villu. 2017. “R, Scikit-Learn, and Apache Spark Ml: What Difference Does It Make?” Youtube - StartApp. <a href="https://www.youtube.com/watch?v=CdVXEQgmnfY">https://www.youtube.com/watch?v=CdVXEQgmnfY</a>.</p>
+
+<p>Wampler, Dean. 2017. “Fast Data Architectures for Streaming Applications.” Youtube - GOTO Conferences. <a href="https://www.youtube.com/watch?v=oCW5y4_8uGU">https://www.youtube.com/watch?v=oCW5y4_8uGU</a>.</p>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/presentations/highlight/highlight.pack.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/fsharp.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script><script>hljs.configure({languages:['scala','java','bash','haskell','fsharp','scala','python','java','bash','r']});
 hljs.initHighlighting();
               </script><script src="/presentations/js/mathjax-config.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML,https://rhdzmota.github.io/presentations/js/mathjax-config.js"></script><script>((window.gitter = {}).chat = {}).options = {
