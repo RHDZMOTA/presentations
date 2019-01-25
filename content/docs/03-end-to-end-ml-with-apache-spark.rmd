@@ -161,7 +161,7 @@ According to their website,
 
 [Apache Spark]: https://spark.apache.org/
 
-Accoding to the book "High Performance Spark - Best Practices for Scaling & Optimizing Apache Spark": 
+According to the book "High Performance Spark - Best Practices for Scaling & Optimizing Apache Spark": 
 
 > "Apache Spark is a high-performance, general puropose distributed computer system. Spark enables us to process large quantities of data, beyond what can fit on a sinlge machine, with a high-level, relatively easy-to-use API. Uniquely, Spark allows us to write the logic of data transformations and machine learning algorithms in a way that is parallelizable, but relatively system agnostic."
 
@@ -264,7 +264,6 @@ One of the most usefull abstractions available on the Spark ML package are pipel
 * `Estimator`: an algorithm that takes a `DataFrame` and returns a `Transformer`.
 * `Pipeline`: a chain of multiple `Transformer` or `Estimator`. 
 
-add image of transformation
 
 ### Intro to JPMML and Openscoring
 
@@ -318,8 +317,6 @@ Complexity vs dataset size.
 
 ## Code Example!
 
-### Problem definition
-
 ### Download the data
 
 We can use the Gutenberg Project as a data-source for our ML task. To download the complete content of the gutenberg project as a set of txt-files run the following bash-command:
@@ -341,7 +338,7 @@ Consider taking a random sample to facilitate local development. The following c
 mkdir gutenberg-sample && ls gutenberg/ | shuf -n 5000 | xargs -I _ cp gutenberg/_ gutenberg-sample/_
 ```
 
-Printing the results... 
+Printing the results. 
 
 ```bash
 echo "There are $(ls -l gutenberg | wc -l) books that represent: $(du -sh gutenberg)"
@@ -364,7 +361,7 @@ $ sbt about
 
 ### WordCount
 
-Let's do a quick wordcount example on the dataset as a warmup exercise:
+Let's do a quick wordcount example on the dataset as a warm-up exercise:
 
 ```scala
 import com.rhdzmota.presentations.Settings.S03
@@ -406,6 +403,10 @@ sbt "content/runMain com.rhdzmota.presentations.S03.WordCount"
 ### Next Word Prediction
 
 The challenge we have consists con taking an n-set of books and create a model that's capable of predicting the next word given a context of the last m-words. 
+
+A similar approach is performed for generating [word embeddings] based on the distributional hypothesis - words that appear in the same contexts share semantic meaning.
+
+[word embeddings]: https://www.tensorflow.org/tutorials/representation/word2vec 
 
 ### Openscoring Container
 
