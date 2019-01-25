@@ -47,7 +47,7 @@ object DataProcessing extends Context {
       .setOutputCols((1 to lags).toArray.map(i => s"lag${i}_vec_index"))
 
     val vectorAssembler: VectorAssembler = new VectorAssembler()
-      .setInputCols((1 to lags).toArray.map(i => s"lag${i}_index"))
+      .setInputCols((1 to lags).toArray.map(i => s"lag${i}_vec_index"))
       .setOutputCol("features")
   }
 
