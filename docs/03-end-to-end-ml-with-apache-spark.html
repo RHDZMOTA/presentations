@@ -144,7 +144,7 @@ Big Picture Architecture</p>
   <p>“<a href="https://spark.apache.org/">Apache Spark</a> is a unified analytics engine for large-scale data processing.”</p>
 </blockquote>
 
-<p>Accoding to the book “High Performance Spark - Best Practices for Scaling &amp; Optimizing Apache Spark”:</p>
+<p>According to the book “High Performance Spark - Best Practices for Scaling &amp; Optimizing Apache Spark”:</p>
 
 <blockquote>
   <p>“Apache Spark is a high-performance, general puropose distributed computer system. Spark enables us to process large quantities of data, beyond what can fit on a sinlge machine, with a high-level, relatively easy-to-use API. Uniquely, Spark allows us to write the logic of data transformations and machine learning algorithms in a way that is parallelizable, but relatively system agnostic.”</p>
@@ -223,26 +223,26 @@ Big Picture Architecture</p>
 <span class="c1">// +----------------+---------+--------+
 // |            name|birthYear|deadYear|
 // +----------------+---------+--------+
-// |      Data Ninja|     1999|    2019|
-// |     Pizza Lover|     1995|    2019|
-// |Random Developer|     1998|    2019|
-// |Random Developer|     1998|    2019|
-// |      Data Ninja|     1996|    2019|
-// |     Pizza Lover|     1996|    2019|
+// |      Data Ninja|     1998|    2019|
+// |Random Developer|     2000|    2019|
+// |Random Developer|     1996|    2019|
+// |      Data Ninja|     1995|    2019|
+// |Random Developer|     1996|    2019|
 // |      Beer Lover|     1997|    2019|
-// |      Beer Lover|     1995|    2019|
-// |     Pizza Lover|     1998|    2019|
-// |     Pizza Lover|     1995|    2019|
-// |      Data Ninja|     1997|    2019|
+// |      Beer Lover|     1997|    2019|
+// |     Pizza Lover|     1997|    2019|
+// |      Data Ninja|     1999|    2019|
+// |      Beer Lover|     1997|    2019|
+// |      Data Ninja|     1996|    2019|
+// |      Beer Lover|     1996|    2019|
+// |      Beer Lover|     1997|    2019|
+// |     Pizza Lover|     1997|    2019|
+// |      Data Ninja|     1995|    2019|
 // |      Beer Lover|     1999|    2019|
 // |Random Developer|     1995|    2019|
-// |      Beer Lover|     1995|    2019|
-// |      Beer Lover|     1998|    2019|
-// |      Data Ninja|     1996|    2019|
-// |      Data Ninja|     1999|    2019|
-// |      Beer Lover|     1995|    2019|
-// |     Pizza Lover|     1996|    2019|
+// |     Pizza Lover|     1995|    2019|
 // |      Data Ninja|     1997|    2019|
+// |     Pizza Lover|     2000|    2019|
 // +----------------+---------+--------+
 // only showing top 20 rows
 // 
@@ -271,8 +271,6 @@ Big Picture Architecture</p>
   <li><code class="highlighter-rouge">Estimator</code>: an algorithm that takes a <code class="highlighter-rouge">DataFrame</code> and returns a <code class="highlighter-rouge">Transformer</code>.</li>
   <li><code class="highlighter-rouge">Pipeline</code>: a chain of multiple <code class="highlighter-rouge">Transformer</code> or <code class="highlighter-rouge">Estimator</code>.</li>
 </ul>
-
-<p>add image of transformation</p>
 
 <h3 id="intro-to-jpmml-and-openscoring">Intro to JPMML and Openscoring</h3>
 
@@ -369,8 +367,6 @@ Complexity vs dataset size.</p>
 
 <h2 id="code-example">Code Example!</h2>
 
-<h3 id="problem-definition">Problem definition</h3>
-
 <h3 id="download-the-data">Download the data</h3>
 
 <p>We can use the Gutenberg Project as a data-source for our ML task. To download the complete content of the gutenberg project as a set of txt-files run the following bash-command:</p>
@@ -392,7 +388,7 @@ Complexity vs dataset size.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>gutenberg-sample <span class="o">&amp;&amp;</span> <span class="nb">ls </span>gutenberg/ | <span class="nb">shuf</span> <span class="nt">-n</span> 5000 | xargs <span class="nt">-I</span> _ <span class="nb">cp </span>gutenberg/_ gutenberg-sample/_
 </code></pre></div></div>
 
-<p>Printing the results…</p>
+<p>Printing the results.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"There are </span><span class="k">$(</span><span class="nb">ls</span> <span class="nt">-l</span> gutenberg | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span><span class="s2"> books that represent: </span><span class="k">$(</span><span class="nb">du</span> <span class="nt">-sh</span> gutenberg<span class="k">)</span><span class="s2">"</span>
 </code></pre></div></div>
@@ -421,7 +417,7 @@ Complexity vs dataset size.</p>
 
 <h3 id="wordcount">WordCount</h3>
 
-<p>Let’s do a quick wordcount example on the dataset as a warmup exercise:</p>
+<p>Let’s do a quick wordcount example on the dataset as a warm-up exercise:</p>
 
 <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.rhdzmota.presentations.Settings.S03</span>
 <span class="k">import</span> <span class="nn">com.rhdzmota.presentations.S03.config.Context</span>
@@ -460,6 +456,8 @@ Complexity vs dataset size.</p>
 <h3 id="next-word-prediction">Next Word Prediction</h3>
 
 <p>The challenge we have consists con taking an n-set of books and create a model that’s capable of predicting the next word given a context of the last m-words.</p>
+
+<p>A similar approach is performed for generating <a href="https://www.tensorflow.org/tutorials/representation/word2vec">word embeddings</a> based on the distributional hypothesis - words that appear in the same contexts share semantic meaning.</p>
 
 <h3 id="openscoring-container">Openscoring Container</h3>
 

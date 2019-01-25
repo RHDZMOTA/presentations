@@ -147,12 +147,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.7.3" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#intro-to-jpmml-and-openscoring"><i class="fa fa-check"></i><b>3.7.3</b> Intro to JPMML and Openscoring</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#code-example"><i class="fa fa-check"></i><b>3.8</b> Code Example!</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#problem-definition"><i class="fa fa-check"></i><b>3.8.1</b> Problem definition</a></li>
-<li class="chapter" data-level="3.8.2" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#download-the-data"><i class="fa fa-check"></i><b>3.8.2</b> Download the data</a></li>
-<li class="chapter" data-level="3.8.3" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#minimum-setup"><i class="fa fa-check"></i><b>3.8.3</b> Minimum Setup</a></li>
-<li class="chapter" data-level="3.8.4" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#wordcount"><i class="fa fa-check"></i><b>3.8.4</b> WordCount</a></li>
-<li class="chapter" data-level="3.8.5" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#next-word-prediction"><i class="fa fa-check"></i><b>3.8.5</b> Next Word Prediction</a></li>
-<li class="chapter" data-level="3.8.6" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#openscoring-container"><i class="fa fa-check"></i><b>3.8.6</b> Openscoring Container</a></li>
+<li class="chapter" data-level="3.8.1" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#download-the-data"><i class="fa fa-check"></i><b>3.8.1</b> Download the data</a></li>
+<li class="chapter" data-level="3.8.2" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#minimum-setup"><i class="fa fa-check"></i><b>3.8.2</b> Minimum Setup</a></li>
+<li class="chapter" data-level="3.8.3" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#wordcount"><i class="fa fa-check"></i><b>3.8.3</b> WordCount</a></li>
+<li class="chapter" data-level="3.8.4" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#next-word-prediction"><i class="fa fa-check"></i><b>3.8.4</b> Next Word Prediction</a></li>
+<li class="chapter" data-level="3.8.5" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#openscoring-container"><i class="fa fa-check"></i><b>3.8.5</b> Openscoring Container</a></li>
 </ul></li>
 <li class="chapter" data-level="3.9" data-path="end-to-end-ml-with-apache-spark.html"><a href="end-to-end-ml-with-apache-spark.html#references-2"><i class="fa fa-check"></i><b>3.9</b> References</a></li>
 </ul></li>
@@ -297,7 +296,7 @@ Big Picture Architecture</p>
 <blockquote>
 <p>“<a href="https://spark.apache.org/">Apache Spark</a> is a unified analytics engine for large-scale data processing.”</p>
 </blockquote>
-<p>Accoding to the book “High Performance Spark - Best Practices for Scaling &amp; Optimizing Apache Spark”:</p>
+<p>According to the book “High Performance Spark - Best Practices for Scaling &amp; Optimizing Apache Spark”:</p>
 <blockquote>
 <p>“Apache Spark is a high-performance, general puropose distributed computer system. Spark enables us to process large quantities of data, beyond what can fit on a sinlge machine, with a high-level, relatively easy-to-use API. Uniquely, Spark allows us to write the logic of data transformations and machine learning algorithms in a way that is parallelizable, but relatively system agnostic.”</p>
 </blockquote>
@@ -357,26 +356,26 @@ deadPeople.<span class="fu">show</span>()
 <span class="co">// +----------------+---------+--------+</span>
 <span class="co">// |            name|birthYear|deadYear|</span>
 <span class="co">// +----------------+---------+--------+</span>
-<span class="co">// |      Data Ninja|     1999|    2019|</span>
-<span class="co">// |     Pizza Lover|     1995|    2019|</span>
-<span class="co">// |Random Developer|     1998|    2019|</span>
-<span class="co">// |Random Developer|     1998|    2019|</span>
-<span class="co">// |      Data Ninja|     1996|    2019|</span>
-<span class="co">// |     Pizza Lover|     1996|    2019|</span>
+<span class="co">// |      Data Ninja|     1998|    2019|</span>
+<span class="co">// |Random Developer|     2000|    2019|</span>
+<span class="co">// |Random Developer|     1996|    2019|</span>
+<span class="co">// |      Data Ninja|     1995|    2019|</span>
+<span class="co">// |Random Developer|     1996|    2019|</span>
 <span class="co">// |      Beer Lover|     1997|    2019|</span>
-<span class="co">// |      Beer Lover|     1995|    2019|</span>
-<span class="co">// |     Pizza Lover|     1998|    2019|</span>
-<span class="co">// |     Pizza Lover|     1995|    2019|</span>
-<span class="co">// |      Data Ninja|     1997|    2019|</span>
+<span class="co">// |      Beer Lover|     1997|    2019|</span>
+<span class="co">// |     Pizza Lover|     1997|    2019|</span>
+<span class="co">// |      Data Ninja|     1999|    2019|</span>
+<span class="co">// |      Beer Lover|     1997|    2019|</span>
+<span class="co">// |      Data Ninja|     1996|    2019|</span>
+<span class="co">// |      Beer Lover|     1996|    2019|</span>
+<span class="co">// |      Beer Lover|     1997|    2019|</span>
+<span class="co">// |     Pizza Lover|     1997|    2019|</span>
+<span class="co">// |      Data Ninja|     1995|    2019|</span>
 <span class="co">// |      Beer Lover|     1999|    2019|</span>
 <span class="co">// |Random Developer|     1995|    2019|</span>
-<span class="co">// |      Beer Lover|     1995|    2019|</span>
-<span class="co">// |      Beer Lover|     1998|    2019|</span>
-<span class="co">// |      Data Ninja|     1996|    2019|</span>
-<span class="co">// |      Data Ninja|     1999|    2019|</span>
-<span class="co">// |      Beer Lover|     1995|    2019|</span>
-<span class="co">// |     Pizza Lover|     1996|    2019|</span>
+<span class="co">// |     Pizza Lover|     1995|    2019|</span>
 <span class="co">// |      Data Ninja|     1997|    2019|</span>
+<span class="co">// |     Pizza Lover|     2000|    2019|</span>
 <span class="co">// +----------------+---------+--------+</span>
 <span class="co">// only showing top 20 rows</span>
 <span class="co">// </span></code></pre></div>
@@ -398,7 +397,6 @@ deadPeople.<span class="fu">show</span>()
 <li><code>Estimator</code>: an algorithm that takes a <code>DataFrame</code> and returns a <code>Transformer</code>.</li>
 <li><code>Pipeline</code>: a chain of multiple <code>Transformer</code> or <code>Estimator</code>.</li>
 </ul>
-<p>add image of transformation</p>
 </div>
 <div id="intro-to-jpmml-and-openscoring" class="section level3">
 <h3><span class="header-section-number">3.7.3</span> Intro to JPMML and Openscoring</h3>
@@ -483,11 +481,8 @@ Complexity vs dataset size.</p>
 </div>
 <div id="code-example" class="section level2">
 <h2><span class="header-section-number">3.8</span> Code Example!</h2>
-<div id="problem-definition" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> Problem definition</h3>
-</div>
 <div id="download-the-data" class="section level3">
-<h3><span class="header-section-number">3.8.2</span> Download the data</h3>
+<h3><span class="header-section-number">3.8.1</span> Download the data</h3>
 <p>We can use the Gutenberg Project as a data-source for our ML task. To download the complete content of the gutenberg project as a set of txt-files run the following bash-command:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">curl</span> -sSL https://raw.githubusercontent.com/RHDZMOTA/spark-wordcount/develop/gutenberg.sh <span class="kw">|</span> <span class="fu">sh</span></code></pre></div>
 <p>Depending on your network speed this can take up to 3 hours.</p>
@@ -498,11 +493,11 @@ Complexity vs dataset size.</p>
 </ul>
 <p>Consider taking a random sample to facilitate local development. The following command generates a sample of 5K books:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">mkdir</span> gutenberg-sample <span class="kw">&amp;&amp;</span> <span class="fu">ls</span> gutenberg/ <span class="kw">|</span> <span class="ex">shuf</span> -n 5000 <span class="kw">|</span> <span class="fu">xargs</span> -I _ cp gutenberg/_ gutenberg-sample/_</code></pre></div>
-<p>Printing the results…</p>
+<p>Printing the results.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> <span class="st">&quot;There are </span><span class="va">$(</span><span class="fu">ls</span> -l gutenberg <span class="kw">|</span> <span class="fu">wc</span> -l<span class="va">)</span><span class="st"> books that represent: </span><span class="va">$(</span><span class="fu">du</span> -sh gutenberg<span class="va">)</span><span class="st">&quot;</span></code></pre></div>
 </div>
 <div id="minimum-setup" class="section level3">
-<h3><span class="header-section-number">3.8.3</span> Minimum Setup</h3>
+<h3><span class="header-section-number">3.8.2</span> Minimum Setup</h3>
 <ol style="list-style-type: decimal">
 <li>Install [Java 8] or greater.
 <ul>
@@ -520,8 +515,8 @@ $ <span class="fu">rm</span> -r sbt-1.2.6.deb
 $ <span class="ex">sbt</span> about</code></pre></div>
 </div>
 <div id="wordcount" class="section level3">
-<h3><span class="header-section-number">3.8.4</span> WordCount</h3>
-<p>Let’s do a quick wordcount example on the dataset as a warmup exercise:</p>
+<h3><span class="header-section-number">3.8.3</span> WordCount</h3>
+<p>Let’s do a quick wordcount example on the dataset as a warm-up exercise:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> com.<span class="fu">rhdzmota</span>.<span class="fu">presentations</span>.<span class="fu">Settings</span>.<span class="fu">S03</span>
 <span class="kw">import</span> com.<span class="fu">rhdzmota</span>.<span class="fu">presentations</span>.<span class="fu">S03</span>.<span class="fu">config</span>.<span class="fu">Context</span>
 <span class="kw">import</span> org.<span class="fu">apache</span>.<span class="fu">spark</span>.<span class="fu">sql</span>._
@@ -550,11 +545,12 @@ $ <span class="ex">sbt</span> about</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">sbt</span> <span class="st">&quot;content/runMain com.rhdzmota.presentations.S03.WordCount&quot;</span> </code></pre></div>
 </div>
 <div id="next-word-prediction" class="section level3">
-<h3><span class="header-section-number">3.8.5</span> Next Word Prediction</h3>
+<h3><span class="header-section-number">3.8.4</span> Next Word Prediction</h3>
 <p>The challenge we have consists con taking an n-set of books and create a model that’s capable of predicting the next word given a context of the last m-words.</p>
+<p>A similar approach is performed for generating <a href="https://www.tensorflow.org/tutorials/representation/word2vec">word embeddings</a> based on the distributional hypothesis - words that appear in the same contexts share semantic meaning.</p>
 </div>
 <div id="openscoring-container" class="section level3">
-<h3><span class="header-section-number">3.8.6</span> Openscoring Container</h3>
+<h3><span class="header-section-number">3.8.5</span> Openscoring Container</h3>
 <p>We can easily leverage Openscoring with Docker.</p>
 <p>Consider the following <code>Dockerfile</code>:</p>
 <pre class="docker"><code>FROM maven:3.5-jdk-8-alpine

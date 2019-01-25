@@ -10,6 +10,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="reveal.js/css/reveal.css">
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
@@ -32,24 +69,159 @@
   <p class="author">Rodrigo Hernández Mota</p>
 </section>
 
-<section id="whoami" class="slide level3">
-<h3><code>whoami</code></h3>
+<section class="slide level2">
+
+<h3 id="whoami"><code>whoami</code></h3>
 <p>@<a href="https://twitter.com/rhdzmota">rhdzmota</a></p>
 <p>Data Engineer / Scientist at <a href="http://leadgenius.com">LeadGenius</a></p>
 </section>
-<section id="agenda" class="slide level3">
-<h3>Agenda</h3>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
 <ol type="1">
-<li>Overview of an ML Project</li>
-<li>Operationalizing ML Models</li>
-<li>Introduction to Spark ML &amp; Openscoring</li>
-<li>Minimum ML Pipeline</li>
-<li>Use case walk-through</li>
-<li>Demo!</li>
+<li>ML Project Overview</li>
+<li>Operationalizing</li>
+<li>Spark-Based Projects</li>
+<li>Code Example!</li>
 </ol>
 </section>
-<section class="slide level3">
+<section class="slide level2">
 
+<h3 id="acknowledgments">Acknowledgments</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=SNxMLINtlbo">Operationalizing Machine Learning - Serving ML Models</a> by Boris Lublinsky</li>
+<li><a href="https://www.youtube.com/watch?v=woRmeGvOaz4">Concept Drift: Monitoring Model Quality in Streaming Machine Learning Applications</a> by Emre Velipasaoglu</li>
+<li><a href="https://www.youtube.com/watch?v=CdVXEQgmnfY">R, Scikit-Learn, and Apache Spark ML: What Difference Does It Make?</a> by Villu Ruusmann</li>
+</ul>
+</section>
+<section id="ml-project-cycle" class="slide level2">
+<h2>ML Project Cycle</h2>
+<figure>
+<img src="../img/ml-cycle.png" alt="Machine Learning Cycle" /><figcaption>Machine Learning Cycle</figcaption>
+</figure>
+</section>
+<section id="ml-pipelines" class="slide level2">
+<h2>ML Pipelines</h2>
+<figure>
+<img src="../img/pipeline.png" alt="Machine Learning Pipeline" /><figcaption>Machine Learning Pipeline</figcaption>
+</figure>
+</section>
+<section id="operationalizing" class="slide level2">
+<h2>Operationalizing</h2>
+</section>
+<section class="slide level2">
+
+<h3 id="traditional-approach">Traditional Approach</h3>
+<figure>
+<img src="../img/impedance-mismatch.png" alt="Impedance Mismatch" /><figcaption>Impedance Mismatch</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<h3 id="a-simple-solution">A simple solution</h3>
+<p>Predictive Markdown Model Language is:</p>
+<blockquote>
+<p>&quot;an XML-based language that provides a way for applications to define statistical and data-mining models as well as to share models between PMML-compliant applications.&quot;</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<h3 id="pmml-interop">PMML Interop</h3>
+<p>Integration with the most popular ML frameworks via JPMML:</p>
+<ul>
+<li><a href="https://github.com/jpmml/jpmml-sparkml">jpmml-sparkml</a></li>
+<li><a href="https://github.com/jpmml/jpmml-sklearn">jpmml-sklearn</a></li>
+<li><a href="https://github.com/jpmml/jpmml-r">jpmml-r</a></li>
+<li><a href="https://github.com/jpmml/jpmml-xgboost">jpmml-xgboost</a></li>
+<li><a href="https://github.com/jpmml/jpmml-tensorflow">jpmml-tensorflow</a></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="simple-solution-using-pmml">Simple Solution using PMML</h3>
+<figure>
+<img src="../img/simple-ml-scoring.png" alt="Simple Scoring" /><figcaption>Simple Scoring</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<h3 id="best-practice">Best Practice</h3>
+<p>We can perform model scoring either with a stream-processing engine or a stream-processing library.</p>
+<figure>
+<img src="../img/suggested-architecture.png" alt="Suggested Architecture" /><figcaption>Suggested Architecture</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<h3 id="best-practice---akka-aproach">Best Practice - Akka Aproach</h3>
+<p>We can use <a href="https://doc.akka.io/docs/akka/2.5/stream/">Akka Streams</a> - based on <a href="https://doc.akka.io/docs/akka/2.5/guide/tutorial_1.html">Akka Actors</a> (see <a href="https://github.com/RHDZMOTA/cnap-policy-crawler">syntax example</a>).</p>
+<figure>
+<img src="../img/simple-akka-stream-ml.png" alt="Simple Akka Implementation" /><figcaption>Simple Akka Implementation</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<h3 id="akka-cluster">Akka Cluster</h3>
+<figure>
+<img src="../img/akka-cluster-ml.png" alt="Akka Cluster Implementation" /><figcaption>Akka Cluster Implementation</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<h3 id="the-big-picture">The Big Picture</h3>
+<figure>
+<img src="../img/complete-architecture.png" alt="Data Architecture" /><figcaption>Data Architecture</figcaption>
+</figure>
+</section>
+<section id="spark-based-projects" class="slide level2">
+<h2>Spark-Based Projects</h2>
+</section>
+<section class="slide level2">
+
+<h3 id="why-apache-spark">Why Apache Spark?</h3>
+<p>According to their website,</p>
+<blockquote>
+<p>&quot;<a href="https://spark.apache.org/">Apache Spark</a> is a unified analytics engine for large-scale data processing.&quot;</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<h3 id="intro-to-spark-ml">Intro to Spark ML</h3>
+<p>Spark ML is a practical and scalable machine learning library based on a [Dataset].</p>
+<ul>
+<li><code>Dataset[A].map(fn: A =&gt; B): Dataset[B]</code></li>
+<li><code>Dataset[A].flatMap(fn: A =&gt; Dataset[B]): Dataset[B]</code></li>
+<li><code>Dataset[A].filter(fn: A =&gt; Boolean): Dataset[A]</code></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="relevant-concepts">Relevant Concepts</h3>
+<ul>
+<li><code>Dataset[Row]</code></li>
+<li><code>Transformer</code></li>
+<li><code>Estimator</code></li>
+<li><code>Pipeline</code></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="intro-to-jpmml">Intro to JPMML</h3>
+<div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> pmmlBuilder = <span class="kw">new</span> <span class="fu">PMMLBuilder</span>(schema, pipelineModel)
+pmmlBuilder.<span class="fu">build</span>()</code></pre></div>
+<p>See the official <a href="https://github.com/jpmml/jpmml-sparkml">jpmml-sparkml github repo</a> for a complete list of supported <code>PipelineStages</code> types.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="intro-to-openscoring">Intro to Openscoring</h3>
+<p>We can use <a href="https://github.com/openscoring/openscoring">Openscoring</a>, a java-based REST web-service, as our scoring-engine of the resulting PMML model.</p>
+<ul>
+<li>Simple but powerful API</li>
+<li>Allows for single predictions and for batch predictions.</li>
+<li>Acceptable performance (usually sub-milliseconds respond time)</li>
+</ul>
+</section>
+<section id="demo-time" class="slide level2">
+<h2>Demo Time!</h2>
 </section>
     </div>
   </div>
