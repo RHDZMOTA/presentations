@@ -18,7 +18,7 @@ final case class LogisticReg(basePipeline: Pipeline, processing: Pipeline) exten
     .baseOn(basePipeline.stages -> (processing.getStages :+ model :+ Label.converter))
     .addGrid(model.maxIter, maxIter)
     .addGrid(model.regParam, regParam)
-    //.addGrid(model.elasticNetParam, elasticNetParam)
+    .addGrid(model.elasticNetParam, elasticNetParam)
     .build()
 
 }
