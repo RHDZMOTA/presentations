@@ -17,8 +17,8 @@ final case class LogisticReg(basePipeline: Pipeline, processing: Pipeline) exten
   val paramGrid: Array[ParamMap] = new ParamGridBuilder()
     .baseOn(basePipeline.stages -> (processing.getStages :+ model :+ Label.converter))
     .addGrid(model.maxIter, maxIter)
-    //.addGrid(model.regParam, regParam)
-    //.addGrid(model.elasticNetParam, elasticNetParam)
+    .addGrid(model.regParam, regParam)
+    .addGrid(model.elasticNetParam, elasticNetParam)
     .build()
 
 }
